@@ -1,0 +1,32 @@
+<% if(featuredRentals){%>
+<figure>
+  <img src="/images/<%= imageUrl %>" alt="<%- headline %>" />
+  <figcaption class="<%= isMain ? 'fig1' : 'fig4' %>">
+    <p><%= headline %></p>
+  </figcaption>
+  <figcaption class="fig1">
+    <% if(featuredRentals && isMain) {%>
+    <p><%= city %>, <%= province %></p>
+    <% } %>
+    <figure class="fig2">
+      <p>
+        Sleeps <%= numSleeps %> | <%= numBedrooms %> BR | <%= numBathrooms %> BA
+        | C$<%= pricePerNight %>/night
+      </p>
+    </figure>
+  </figcaption>
+</figure>
+<% } else { %>
+<figure>
+  <img src="/images/<%= imageUrl %>" alt="<%- headline %>" />
+  <figcaption class="fig4">
+    <p><%= headline %></p>
+    <figure class="fig2">
+      <p>
+        Sleeps <%= numSleeps %> | <%= numBedrooms %> BR | <%= numBathrooms %> BA
+        | C$<%= pricePerNight %>/night
+      </p>
+    </figure>
+  </figcaption>
+</figure>
+<%} %>

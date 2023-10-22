@@ -1,0 +1,157 @@
+<div class="content">
+  <div class="banner">
+    <div class="container">
+      <div class="banner-content">
+        <h1>Vacations always in season</h1>
+        <p>
+          Booking your perfect getaway vacation from the comfort <br />of your
+          home. Whether it be friends or family we got you <br />covered.
+        </p>
+        <button type="button" onclick="location.href='/rentals'">
+          view rentals
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="words">
+    <p>
+      Welcome to Libby's Rentals a place that welcomes families of all
+      backgrounds. Whether you're looking for a place just to relax with family
+      members or a getaway with that special someone, we've got you covered.
+      From houses, cottages to beach houses, spacious luxurious bedrooms with
+      additional amenities makes you feel right at home. Our hassle free website
+      always you to book your stay immediately in the comfort of your home with
+      24/7 support system to make sure your needs are met.
+    </p>
+  </div>
+  <div class="main-container">
+    <div class="container1">
+      <figure>
+        <img src="/images/beachview.jpg" alt="beachview" />
+        <figcaption class="pics">Pool side with view</figcaption>
+      </figure>
+    </div>
+    <div class="container1">
+      <figure>
+        <img src="/images/cottage.jpg" alt="cottage" />
+        <figcaption class="pics">Enjoy nature with family</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="one">
+      <img src="/images/money.png" alt="money icon" />
+    </div>
+    <div class="two">
+      <img src="/images/world.png" alt="world icon" />
+    </div>
+    <div class="three">
+      <img src="/images/security.png" alt="security icon" />
+    </div>
+    <div class="four">
+      <img src="/images/support.png" alt="support icon" />
+    </div>
+    <div class="one-text">
+      <h2>Affordable prices</h2>
+      <p>spacious houses, close-by amenities</p>
+    </div>
+    <div class="two-text">
+      <h2>Everyone is VIP</h2>
+      <p>A place where everyone can feel appreciated.</p>
+    </div>
+    <div class="three-text">
+      <h2>Safety is key</h2>
+      <p>surveillance on-site to ensure safe stay.</p>
+    </div>
+    <div class="four-text">
+      <h2>Customer support</h2>
+      <p>24/7 support to answer all booking inquiries and more.</p>
+    </div>
+  </div>
+  <% if (rentals && rentals.length > 0) { %>
+  <div class="sub-header">
+    <h2>Featured Rentals</h2>
+    <div class="images-container">
+      <% rentals.forEach(rental => { %> <%- include("partials/rental", rental)
+      %> <% }); %>
+    </div>
+  </div>
+  <% } %>
+</div>
+<div class="home-foot">
+  <footer>
+    <hr />
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Home</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/rentals">Rentals</a>
+            <a class="nav-link" href="/sign-up">Sign-up</a>
+            <a class="nav-link" href="/log-in">Log-in</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    By submitting this assignment I declare that this assignment is my own work
+    in accordance with the Seneca Academic Policy. <br />No part of this
+    assignment has been copied manually or electronically from any other source
+    (including web sites) or distributed to other students.
+    <p>&copy Kester Bascillo, kbascillo@myseneca.ca, WEB322 Winter 2023</p>
+    <div class="credits">
+      <p>
+        Credits:
+        <a
+          href="https://pixabay.com/users/paulbr75-2938186/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3123295"
+          >Paul Brennan</a
+        >
+        <a
+          href="https://pixabay.com/users/artisticoperations-4161274/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3248249"
+          >F.Muhammad
+        </a>
+        <a
+          href="https://pixabay.com/users/justoceuti-8259709/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4741595"
+          >Jose Martinez Justo
+        </a>
+        <a
+          href="https://pixabay.com/users/richardmc-1834381/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3115234"
+          >Richard Mcall
+        </a>
+        <a
+          href="https://pixabay.com/photos/cottage-trees-path-trail-house-2955582/"
+          >Stanly
+        </a>
+      </p>
+    </div>
+    <div class="icons">
+      <a href="https://www.facebook.com/">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <a href="https://twitter.com">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.instagram.com">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top">
+    <span class="scroll-icons">
+      <i class="fa-sharp fa-solid fa-angle-up"></i>
+    </span>
+  </a>
+</div>

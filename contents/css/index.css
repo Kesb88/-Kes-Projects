@@ -1,0 +1,805 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}   
+.header{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1px 100px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.navbar a{
+    position: relative;
+    font-size: 18px;
+    color: #4169E1;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.navbar a::before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4169E1;
+    transition: .3s;
+}
+.navbar a:hover::before{
+    width: 100%;
+
+}
+.navbar a:hover{
+    color: black;
+}
+.logo img{
+    max-width: 20%;
+    max-height: 20%;
+}
+img{
+    width: 100%;
+}
+.banner {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background: url("/images/house.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: white;
+  }
+  
+  .banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+  }
+  
+  .banner-content {
+    z-index: 1;
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  .banner h1, .banner p {
+    color: white; 
+  }
+.banner h1{
+    margin-left: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: relative;
+    padding: 10px;
+    font-size: 60px;
+}
+.banner p{
+    margin-left: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    float: left;
+    padding-left: 50px;
+}
+.banner button{
+    border: 1px solid white;
+    background: none;
+    padding: 10px 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    color: white;
+    position: relative;
+    transition: 0.8s;
+    border-radius: 20px;
+}
+.banner button:hover{
+    color: #4169E1;
+}
+.one{
+    margin-top: 30px;
+    width: 30px;
+    height: 30px;
+}
+.two{
+    margin-top: 30px;
+    width: 30px;
+    height: 30px;
+}
+.three{
+    margin-top: 30px;
+    width: 30px;
+    height: 30px;
+}
+.four{
+    margin-top: 30px;
+    width: 30px;
+    height: 30px;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 20px;
+    margin: 40px;
+    margin-left:100px;
+}
+.words{
+    margin: 100px;
+    font-size: 25px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.main-container{
+    display: flex;
+}
+.container1{
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    margin: 5px;
+    margin-left: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+.one-text h2{
+   font-size: large;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: #4169E1;
+   font-weight: bold;
+}
+.one-text p{
+    font-size: small;
+}
+.two-text h2{
+   display: inline-block;
+   font-size: large;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: #4169E1;
+   font-weight: bold;
+}
+.two-text p{
+    font-size: small;
+}
+.three-text h2{
+   font-size: large;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: #4169E1;
+   font-weight: bold;
+}
+.three-text p{
+    font-size: small;
+}
+.four-text h2{
+   font-size: large;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: #4169E1;
+   font-weight: bold;
+}
+.four-text p{
+    font-size: small;
+}
+.images-container{
+    display: flex;
+    float: left;
+}
+.sub-header h2{
+    font-size: large;
+    margin-left: 20px;
+    font-family:sans-serif;
+    font-weight: bold;
+}
+.images-container img{
+    border-radius: 5px;
+    width: 250px;
+    height:150px;
+    margin: 20px;
+}
+.pics{
+    margin-top: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.fig1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-small;
+    font-weight: bold;
+    margin-left: 30px;
+    line-height: 0%;
+}
+.fig2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+.icons{
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+.icons a{
+    height: 50px;
+    width: 50px;
+    background-color: #f5f6fa;
+    border-radius: 25px;
+    text-align: center;
+    margin: 10px;
+    line-height: 65px;
+    margin-right: 20px;
+}
+.icons a i{
+    transition: all 0.3s linear;
+}
+.icons a:hover i{
+    transform: scale(1.4);
+    color: #4169E1;
+}
+.home-foot footer{
+    font-size: 12px;
+    padding: 35px;
+    text-align: left;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 250px;
+}
+.login-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
+.rental-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
+.signup-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
+hr{
+    margin-bottom: 20px;
+}
+.fa-facebook{
+    font-size: 30px;
+    color: black;
+}
+.fa-instagram{
+    font-size: 30px;
+    color: black;
+}
+.fa-x-twitter{
+    font-size: 30px;
+    color: black;
+}
+.fa-youtube{
+    font-size: 30px;
+    color: black;
+}
+.menu{
+    font-size: 15px;
+    text-align: center;
+    padding: 1px 400px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+}
+.menu a{
+    transition: all 0.3s linear;
+    color: black
+    
+}
+.menu a:hover{
+    transform: scale(1.4);
+    color: #4169E1;
+}
+.credits a{
+    font-size: 10px;
+    text-align: left;
+    display: inline-block;
+    margin: 10px;
+    color: black;
+    transition: all 0.3s linear;
+   
+}
+.credits a:hover{
+    transform: scale(1.4);
+    color: #4169E1;
+}
+.sign-up
+{
+    width: 300px;
+    padding: 10px;
+    margin: 8% auto 0;
+    text-align: center;
+    
+}
+.sign-up h1{
+    color: #4169E1;
+    margin-bottom: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.input-box{
+    border-radius: 30px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #4169E1;
+}
+.sign-up span {
+    margin: 10px;
+}
+.sign-up p {
+    font-size: 10px;
+}
+.signup-btn{
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+}
+.sign-up button{
+    font: 1em sans-serif;
+    color: black;
+    transition: all 0.3s linear;
+}
+.sign-up button:hover{
+    color: #4169E1;
+    transform: scale(1.2);
+}
+.login
+{
+    width: 300px;
+    padding: 10px;
+    margin: 8% auto 0;
+    text-align: center;
+    
+}
+.login h1{
+    color: #4169E1;
+    margin-bottom: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.login-btn{
+    width: 150px;
+    padding: 10px;
+    margin: 10px;
+}
+.login button{
+    font: 1em sans-serif;
+    color: black;
+    transition: all 0.3s linear;
+}
+.login button:hover{
+    color: #4169E1;
+    transform: scale(1.2);
+}
+.cityProv-header{
+    margin: 20px;
+    margin-bottom: 40px;
+    color: #4169E1;
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.cityProv-header h2{
+    font-size: 50px;
+    font-weight: bold;
+}
+.images-container2{
+    max-width: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    margin: 40px;
+}
+.fig4{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+html{
+    scroll-behavior: smooth;
+}
+.back-to-top{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4169E1;
+    border-radius: 20%;
+    padding: 0.5rem;
+    height: 3%;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+}
+.back-to-top span{
+    color: #fff;
+    font-size: 15px;
+    transition: 0.2s ease-out;
+}
+.back-to-top:hover{
+    background-color: black;
+}
+.back-to-top:hover span{
+    transform: translateY(-4px);
+}
+@media screen and (max-width: 600px){
+    .logo img{
+        max-width: 100%;
+        max-height: 100%;
+        padding-right: 20px;
+    }
+    .navbar a{
+        font-size: 10px;
+    }
+    .banner h1{
+        font-size: 30px;
+    }
+    .banner p{
+        font-size: 8px;
+        margin-left: 30px;
+    }
+    .banner button{
+        margin-left: 100px;
+        font-size: 8px;
+        margin-bottom: 30px;
+    }
+    .banner{
+        width: 100%;
+        height: 30vh;
+    }
+    .words{
+        line-height: 1.2;
+        margin: 50px;
+        font-size: 12px;
+    }
+    .container1{
+        height: 100%;
+        width: 100%;
+    }
+    .main-container{
+        margin: 10px;
+        margin-top: -60px;
+        margin-bottom: -20px;
+    }
+    .wrapper{
+        gap: 10px;
+        font-size: 10px;
+        margin: 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+
+    }
+    .one-text h2{
+        font-size: 12px;
+    }
+    .two-text h2{
+        font-size: 12px;
+    }
+    .three-text h2{
+        font-size: 12px;
+    }
+    .four-text h2{
+        font-size: 11px;
+    }
+    .sub-header h2{
+        font-size: small;
+        margin-left: 130px;
+    }
+    .images-container{
+        max-width: 100%;
+        height: 100%;
+        display: block;
+        margin-left: 40px;
+    }
+    .pics{
+        margin-top: 0px;
+        font-size: x-small;
+    }
+    .home-foot footer{
+        font-size: 10px;
+        margin-top: 1180px;
+    }
+    .fa-facebook{
+        font-size: 20px;
+    }
+    .fa-instagram{
+        font-size: 20px;
+    }
+    .fa-x-twitter{
+        font-size: 20px;
+    }
+    .fa-youtube{
+        font-size: 20px;
+    }
+    .icons a{
+        height: 30px;
+        width: 30px;
+        background-color: #f5f6fa;
+        border-radius: 25px;
+        text-align: center;
+        margin: 10px;
+        line-height: 40px;
+    }
+    .cityProv-header h2{
+        font-size:15px;
+        font-weight: bold;
+    }
+    .images-container2{
+        max-width: 100%;
+        max-height: 100%;
+        display: grid;
+        grid-template-columns: auto;
+        gap: 20px;
+        margin: 40px;
+    }
+    .fig4{
+        font-size: 10px;
+    }
+    .fig2{
+        font-size: 8px;
+    }
+    .input-box{
+        border-radius: 30px;
+        padding: 10px;
+        margin: 10px 0;
+        width: 50%;
+        border: 1px solid #4169E1;
+    }
+    .sign-up h1{
+       font-size: 15px;
+    }
+    .sign-up p{
+        font-size: 10px;
+     }
+     .sign-up form{
+        font-size: 10px;
+     }
+     .signup-btn{
+        width: 100px;
+        padding: 5px;
+        margin: 5px;
+    }
+    .login h1{
+       font-size: 15px;
+    }
+    .login-btn{
+        padding: 5px;
+        margin: 5px;
+        width: 60px;
+    }
+    .login form{
+        font-size: 10px;
+    }.login button{
+        font-size: 10px;
+    }
+    .header .navbar-toggler{
+        font-size: 5px;
+        color: #4169E1;
+    }
+    .home-foot .navbar-toggler{
+        font-size: 5px;
+        color: #4169E1;
+    }
+    .rental-foot .navbar-toggler{
+        font-size: 5px;
+        color: #4169E1;
+    }
+    .login-foot .navbar-toggler{
+        font-size: 5px;
+        color: #4169E1;
+    }
+    .signup-foot .navbar-toggler{
+        font-size: 5px;
+        color: #4169E1;
+    }
+}
+    @media screen and (max-width: 1125px) and (min-width: 600px)
+    {
+        .logo img{
+            max-width: 30%;
+            max-height: 30%;
+            padding-right: 20px;
+        }
+        .navbar a{
+            font-size: 12px;
+        }
+        .banner h1{
+            font-size: 30px;
+        }
+        .banner p{
+            font-size: 8px;
+            margin-left: 30px;
+        }
+        .banner button{
+            margin-left: 100px;
+            font-size: 8px;
+            margin-bottom: 30px;
+        }
+        .banner{
+            width: 100%;
+            height: 30vh;
+        }
+        .words{
+            line-height: 1.2;
+            margin: 50px;
+            font-size: 12px;
+        }
+        .container1{
+            height: 100%;
+            width: 100%;
+        }
+        .main-container{
+            margin: 10px;
+            margin-top: -60px;
+            margin-bottom: -20px;
+        }
+        .wrapper{
+            gap: 10px;
+            font-size: 10px;
+            margin: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
+    
+        }
+        .one-text h2{
+            font-size: 12px;
+        }
+        .two-text h2{
+            font-size: 12px;
+        }
+        .three-text h2{
+            font-size: 12px;
+        }
+        .four-text h2{
+            font-size: 11px;
+        }
+        .sub-header h2{
+            font-size: small;
+            margin-left: 130px;
+        }
+        .images-container{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 20px;
+            margin-left: 40px;
+        }
+        .images-container img{
+            max-width: 70%;
+            height: 70%;
+        }
+        .pics{
+            margin-top: 0px;
+            font-size: x-small;
+        }
+        .home-foot footer{
+            font-size: 10px;
+            margin-top: 450px;
+        }
+        .fa-facebook{
+            font-size: 20px;
+        }
+        .fa-instagram{
+            font-size: 20px;
+        }
+        .fa-x-twitter{
+            font-size: 20px;
+        }
+        .fa-youtube{
+            font-size: 20px;
+        }
+        .icons a{
+            height: 30px;
+            width: 30px;
+            background-color: #f5f6fa;
+            border-radius: 25px;
+            text-align: center;
+            margin: 10px;
+            line-height: 40px;
+        }
+        .cityProv-header h2{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .images-container2{
+            max-width: 100%;
+            max-height: 100%;
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 20px;
+            margin: 40px;
+        }
+        .fig4{
+            font-size: 20px;
+        }
+        .fig2{
+            font-size: 10px;
+        }
+        .input-box{
+            border-radius: 30px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 50%;
+            border: 1px solid #4169E1;
+        }
+        .sign-up
+        {
+            width: 500px;
+            padding: 10px;
+            margin: 8% auto 0;
+            text-align: center;
+        }
+        .sign-up h1{
+           font-size: 35px;
+        }
+        .sign-up p{
+            font-size: 15px;
+         }
+         .sign-up form{
+            font-size: 15px;
+         }
+         .signup-btn{
+            width: 200px;
+            padding: 10px;
+            margin: 15px;
+        }
+        .login
+        {
+            width: 500px;
+            padding: 10px;
+            margin: 8% auto 0;
+            text-align: center;   
+        }
+        .login h1{
+           font-size: 35px;
+        }
+        .login-btn{
+            padding: 10px;
+            margin: 10px;
+            width: 120px;
+        }
+        .login form{
+            font-size: 15px;
+        }
+        .login button{
+            font-size: 15px;
+        }
+        .header .navbar-toggler{
+            font-size: 5px;
+            color: #4169E1;
+        }
+        .home-foot .navbar-toggler{
+            font-size: 5px;
+            color: #4169E1;
+        }
+        .rental-foot .navbar-toggler{
+            font-size: 5px;
+            color: #4169E1;
+        }
+        .login-foot .navbar-toggler{
+            font-size: 5px;
+            color: #4169E1;
+        }
+        .signup-foot .navbar-toggler{
+            font-size: 5px;
+            color: #4169E1;
+        }
+    
+    
+}
