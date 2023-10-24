@@ -14,6 +14,7 @@ const path = require("path");
 const rentals = require("./models/rentals-db");
 const express = require("express");
 const expressLayouts = require('express-ejs-layouts');
+const { title } = require("process");
 const app = express();
 // Make contents folder public
 
@@ -21,6 +22,8 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main');
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, "/contents")));
+
+app.use(express.urlencoded({ extended: false }));
 // Add your routes here
 // e.g. app.get() { ... }
 
@@ -44,11 +47,128 @@ app.get("/rentals", (req, res) => {
    
  });
 
+ function isValidEmail(email){
+    const verifyEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return verifyEmail.test(email);
+ }
+ function isValidPassword(password){
+    const oneUpperCaseLetter = /[A-Z]/;
+    const oneLowerCaseLetter = /[a-z]/;
+    const oneSpecialCharacter = /[@#$%^&+=*-_!]/;
+    const minSize = 8;
+    const maxSize = 12;
+
+    if(!password)
+    {
+        return "You must enter a password";
+    }
+    if(!oneUpperCaseLetter.test(password) || !oneLowerCaseLetter.test(password) || !oneSpecialCharacter.test(password) || password.length < minSize || password.length > maxSize)
+    {
+        return "You must have at least one upper & lower case letter, one special character and a password length between 8 - 12 characters";
+    }
+
+    return "valid";
+ }
+ function validFirstName(name){
+    const specCharactersAndNumbers = /[^a-zA-Z]+/;
+
+    if(!name)
+    {
+        return "You must enter a first name";
+    }
+    else if(name.length < 2 )
+    {
+        return "First name has to be more than two characters";
+    }
+    else if(specCharactersAndNumbers.test(name))
+    {
+        return "First name cannot have special characters or numbers";
+    }
+    else{
+        return "valid";
+    }
+ }
+ function validLastName(name){
+    const specCharactersAndNumbers = /[^a-zA-Z]+/;
+
+    if(!name)
+    {
+        return "You must enter a last name";
+    }
+    else if(name.length < 2 )
+    {
+        return "Last name has to be more than two characters";
+    }
+    else if(specCharactersAndNumbers.test(name))
+    {
+        return "Last name cannot have special characters or numbers";
+    }
+    else{
+        return "valid";
+    }
+ }
+
+
 app.get("/sign-up", (req, res) => {
+    const values = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+    };
     res.render("sign-up",{
-        title: "Sign-up"
+        title: "Sign-up",
+        values: values,
+        validation: {}
     });
 });
+
+app.post("/sign-up", (req, res) => {
+
+   let passedValidation = true;
+   let validation = {};
+   const { firstName, lastName, email, password } = req.body;
+
+   const firstNameResult = validFirstName(firstName)
+   if(firstNameResult !== "valid")
+   {
+     passedValidation = false;
+     validation.firstName = [firstNameResult]
+   } 
+   const lastNameResult = validLastName(lastName)
+   if(lastNameResult !== "valid")
+   {
+     passedValidation = false;
+     validation.lastName = [lastNameResult]
+   } 
+   
+    if(!email){
+        passedValidation = false;
+        validation.email = "You must enter an email";
+    }
+    else if(!isValidEmail(email))
+    {
+        passedValidation = false;
+        validation.email = "You must enter a valid email";
+    }
+    const passwordResult = isValidPassword(password);
+
+    if(passwordResult !== "valid" )
+    {
+        passedValidation = false;
+        validation.password = [passwordResult];
+    }
+    if(passedValidation){
+        res.send("Success");
+    }
+    else{
+        res.render("sign-up", {
+        title: "Sign-up",
+        values: req.body,
+        validation
+    });
+
+}});
 
 app.get("/log-in", (req, res) => {
     res.render("log-in",{
