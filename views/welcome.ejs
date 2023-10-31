@@ -1,35 +1,7 @@
-<div class="login">
-  <h1>Welcome Back!</h1>
-  <form method="post" action="/log-in">
-    <input
-      type="text"
-      class="input-box"
-      placeholder="Email Address"
-      id="email"
-      name="email"
-      value="<%= values.email %>"
-    />
-    <% if(validation.email){ %>
-    <span style="color: red"><%= validation.email %></span>
-    <% } %>
-    <input
-      type="password"
-      class="input-box"
-      placeholder="Password"
-      id="password"
-      name="password"
-      value="<%= values.password %>"
-    />
-    <% if(validation.password){ %>
-    <span style="color: red"><%= validation.password %></span>
-    <% } %>
-    <div class="login2">
-      <button type="submit" class="login-btn">Login</button>
-      </div>
-  </form>
-  </div>
+<div class="banner2">
+  <h1>Welcome to Libby's Rental</h1>
 </div>
-<div class="login-foot">
+<div class="welcome-foot">
   <footer>
     <hr />
     <nav class="navbar navbar-expand-lg bg-body-tertiary">

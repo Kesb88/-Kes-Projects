@@ -171,8 +171,47 @@ app.post("/sign-up", (req, res) => {
 }});
 
 app.get("/log-in", (req, res) => {
+    const values = {
+        email: '',
+        password: ''
+    };
     res.render("log-in",{
-        title: "Log-in"
+        title: "Log-in",
+        values: values,
+        validation: {}
+    });
+});
+app.post("/log-in", (req, res) => {
+
+    let passedValidation = true;
+    let validation = {};
+
+    const { email, password } = req.body;
+  
+
+    if(!password){
+        passedValidation = false;
+        validation.password = "Enter a valid password";
+    }
+    if(!email){
+        passedValidation = false;
+        validation.email = "Enter a valid email address"
+    }
+    if(passedValidation){
+        res.send("Success");
+    }
+    else{
+        res.render("log-in",{
+            title: "Log-in",
+            values: req.body,
+            validation
+        });
+    }
+});
+
+app.get("/welcome", (req, res) => {
+    res.render("welcome",{
+        title: "Welcome Page"
     });
 });
 
