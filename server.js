@@ -18,6 +18,9 @@ const { title } = require("process");
 const app = express();
 // Make contents folder public
 
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/keys.env" });
+
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main');
 app.use(expressLayouts);
@@ -159,16 +162,46 @@ app.post("/sign-up", (req, res) => {
         validation.password = [passwordResult];
     }
     if(passedValidation){
-        res.send("Success");
-    }
-    else{
-        res.render("sign-up", {
+  const formData = require('form-data');
+  const Mailgun = require('mailgun.js');
+
+  const API_KEY = process.env.MG_API_KEY;
+  const DOMAIN = process.env.MG_DOMAIN;
+
+  const mailgun = new Mailgun(formData);
+  const client = mailgun.client({ username: 'api', key: API_KEY });
+
+  const msg = {
+    to: "<kbascillo@hotmail.com>",
+    from: "Libby's Rental Properties<bascillok@gmail.com>",
+    subject: "Libby's Rental Team",
+    html: `
+      <p>Hello ${firstName} ${lastName}</p>
+      <p>Welcome to Libby's rental properties</p>
+      <p>This is a message from Kester Basciilo at Libby's</p>
+    `
+  }
+
+  client.messages.create(DOMAIN, msg)
+    .then(() => {
+      res.redirect("welcome");
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+      res.render("sign-up", {
         title: "Sign-up",
         values: req.body,
         validation
+      });
     });
-
-}});
+} else {
+  res.render("sign-up", {
+    title: "Sign-up",
+    values: req.body,
+    validation
+  });
+}
+});
 
 app.get("/log-in", (req, res) => {
     const values = {
@@ -198,7 +231,7 @@ app.post("/log-in", (req, res) => {
         validation.email = "Enter a valid email address"
     }
     if(passedValidation){
-        res.send("Success");
+        res.redirect("welcome");
     }
     else{
         res.render("log-in",{
