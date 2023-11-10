@@ -172,7 +172,7 @@ app.post("/sign-up", (req, res) => {
   const client = mailgun.client({ username: 'api', key: API_KEY });
 
   const msg = {
-    to: "<kbascillo@hotmail.com>",
+    to: email,
     from: "Libby's Rental Properties<bascillok@gmail.com>",
     subject: "Libby's Rental Team",
     html: `
