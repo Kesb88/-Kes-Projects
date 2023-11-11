@@ -23,8 +23,19 @@
     <% if(validation.password){ %>
     <span style="color: red"><%= validation.password %></span>
     <% } %>
-    <div class="login2">
-      <button type="submit" class="login-btn">Login</button>
+      <div class="role-selection">
+        <label>
+          <input type="radio" name="role" value="clerk" checked>
+          Data Entry Clerk
+        </label>
+        <label>
+          <input type="radio" name="role" value="customer">
+          Customer
+        </label>
+      </div>
+  
+      <div class="login2">
+        <button type="submit" class="login-btn">Login</button>
       </div>
   </form>
   </div>
@@ -48,7 +59,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="/rentals">Rentals</a>
+            <a class="nav-link" href="/rentals/rentals">Rentals</a>
             <a class="nav-link" href="/sign-up">Sign-up</a>
             <a class="nav-link" href="/log-in">Log-in</a>
           </div>

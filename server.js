@@ -11,11 +11,11 @@
 **************************************************************************************/
 
 const path = require("path");
-const rentals = require("./models/rentals-db");
 const express = require("express");
 const expressLayouts = require('express-ejs-layouts');
-const { title } = require("process");
 const app = express();
+const mongoose = require("mongoose");
+const session = require("express-session");
 // Make contents folder public
 
 const dotenv = require("dotenv");
@@ -25,12 +25,32 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main');
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, "/contents")));
+app.use(session({
+    secret: process.env.SECRET_SESSION,
+    resave: false,
+    saveUninitialized: true
+
+}));
+
+app.use((req, res, next) => {
+
+    res.locals.user = req.session.user;
+    next();
+})
 
 app.use(express.urlencoded({ extended: false }));
+
+const generalController = require("./controllers/generalController");
+const rentalsController = require("./controllers/rentalsController");
+
+
+app.use("/", generalController);
+app.use("/rentals", rentalsController);
 // Add your routes here
 // e.g. app.get() { ... }
 
 
+<<<<<<< HEAD
 app.get("/", (req, res) => {
     const featuredRentals = rentals.getFeaturedRentals();
     res.render("home",{
@@ -248,6 +268,8 @@ app.get("/welcome", (req, res) => {
     });
 });
 
+=======
+>>>>>>> 5a6d829 (Completed Assignment 4)
 // *** DO NOT MODIFY THE LINES BELOW ***
 
 // This use() will not allow requests to go beyond it
@@ -277,4 +299,13 @@ function onHttpStart() {
   
 // Listen on port 8080. The default port for http is 80, https is 443. We use 8080 here
 // because sometimes port 80 is in use by other applications on the machine
+<<<<<<< HEAD
 app.listen(HTTP_PORT, onHttpStart);
+=======
+
+mongoose.connect(process.env.MONGODB_CONNECTION).then(() =>{
+    console.log("Connection successful");
+
+    app.listen(HTTP_PORT, onHttpStart);
+});
+>>>>>>> 5a6d829 (Completed Assignment 4)
