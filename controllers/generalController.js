@@ -249,11 +249,9 @@ router.post("/log-in", (req, res) => {
                         if (user && role === "clerk") {
                             req.session.role = "clerk";
                             res.redirect("/rentals/list");
-                        } else if (user && role === "customer") {
+                        } else {
                             req.session.role = "customer";
                             res.redirect("/cart");
-                        } else {
-                            validation.user = "Error, must choose a role";
                         }
                     }
                     else{
