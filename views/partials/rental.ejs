@@ -1,32 +1,17 @@
-<% if(rentals){%>
 <figure>
-  <img src="/images/<%= rentals.imageUrl %>" alt="<%= rentals.headline %>" />
+  <img src="/images/<%= rental.imageUrl %>" alt="<%- rental.headline %>" />
   <figcaption class="<%= isMain ? 'fig1' : 'fig4' %>">
-    <p><%= rentals.headline %></p>
+    <p><%= rental.headline %></p>
   </figcaption>
   <figcaption class="fig1">
-    <% if(rentals && isMain) {%>
-    <p><%= rentals.city %>, <%= rentals.province %></p>
+    <% if(rental && isMain) {%>
+    <p><%= rental.city %>, <%= rental.province %></p>
     <% } %>
     <figure class="fig2">
       <p>
-        Sleeps <%= rentals.numSleeps %> | <%= rentals.numBedrooms %> BR | <%=
-        rentals.numBathrooms %> BA | C$<%= rentals.pricePerNight %>/night
+        Sleeps <%= rental.numSleeps %> | <%= rental.numBedrooms %> BR | <%=
+        rental.numBathrooms %> BA | C$<%= rental.pricePerNight %>/night
       </p>
     </figure>
   </figcaption>
 </figure>
-<% } else { %>
-<figure>
-  <img src="/images/<%= rentals.imageUrl %>" alt="<%= rentals.headline %>" />
-  <figcaption class="fig4">
-    <p><%= rentals.headline %></p>
-    <figure class="fig2">
-      <p>
-        Sleeps <%= rentals.numSleeps %> | <%= rentals.numBedrooms %> BR | <%=
-        rentals.numBathrooms %> BA | C$<%= rentals.pricePerNight %>/night
-      </p>
-    </figure>
-  </figcaption>
-</figure>
-<%} %>

@@ -72,10 +72,9 @@
   <div class="sub-header">
     <h2>Featured Rentals</h2>
     <div class="images-container">
-      <% rentals.forEach(rental => { %> <%- include("../partials/rental",
-      rental) %> <% }); %>
+      <% rentals.forEach(rental => { %> <%- include("../partials/rental",{
+      rental }) %> <% }); %>
     </div>
-    z
   </div>
   <% } %>
 </div>

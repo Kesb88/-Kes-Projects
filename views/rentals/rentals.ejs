@@ -1,10 +1,10 @@
-<% rentals.forEach(function(group) { %>
+<% Object.keys(rentalsByCityAndProvince).forEach((cityProvince) => { %>
 <div class="cityProv-header">
-  <h2><%= group.cityProvince %></h2>
+  <h2><%= cityProvince %></h2>
 </div>
 <div class="images-container2">
-  <% rentals.forEach(function(rental) { %> <%- include('../partials/rental',
-  rental) %> <% }); %>
+  <% rentalsByCityAndProvince[cityProvince].forEach((rental) => { %> <%-
+  include('../partials/rental', { rental }) %> <% }); %>
 </div>
 <% }); %>
 <div class="rental-foot">
