@@ -24,6 +24,7 @@
             Hello <%= user.firstName %>
           </a>
           <a class="nav-link" href="/logout">Logout</a>
+          <a class="nav-link" href="/load-data/rentals">Load Rentals </a>
           <% } else if(user && role === "customer") { %>
           <a class="nav-link" href="/cart"> Hello <%= user.firstName %> </a>
           <a class="nav-link" href="/logout">Logout</a>

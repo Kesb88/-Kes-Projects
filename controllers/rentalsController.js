@@ -1,17 +1,24 @@
 const express = require("express");
+const rentalModel = require("../models/rentalModel");
 const rentals = require("../models/rentals-db");
 const router = express.Router();
 
 router.get("/rentals", (req, res) => {
     const role = req.session.role;
-    const allRentals = rentals.getRentalsByCityAndProvince();
-    res.render("rentals/rentals",{
-        rentals: allRentals,
-        title: "Rentals",
-        isMain: false,
-        footerRentals: true,
-        role
-    });
+    rentalModel.find()
+        .then((allRentals) => {
+            console.log(rentals);
+            res.render("rentals/rentals",{
+                rentals: allRentals,
+                title: "Rentals",
+                isMain: false,
+                footerRentals: true,
+                role
+            });
+        })
+        .catch(err => {
+            console.error("Error fetching all rentals", err);
+        })
  });
 
  router.get("/list",(req, res) => {

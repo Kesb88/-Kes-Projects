@@ -42,10 +42,12 @@ app.use(express.urlencoded({ extended: false }));
 
 const generalController = require("./controllers/generalController");
 const rentalsController = require("./controllers/rentalsController");
+const loadDataController = require("./controllers/loadDataController");
 
 
 app.use("/", generalController);
 app.use("/rentals", rentalsController);
+app.use("/load-data", loadDataController);
 // Add your routes here
 // e.g. app.get() { ... }
 

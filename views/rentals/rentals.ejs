@@ -3,8 +3,8 @@
   <h2><%= group.cityProvince %></h2>
 </div>
 <div class="images-container2">
-  <% group.rentals.forEach(function(rental) { %> <%-
-  include('../partials/rental', rental) %> <% }); %>
+  <% rentals.forEach(function(rental) { %> <%- include('../partials/rental',
+  rental) %> <% }); %>
 </div>
 <% }); %>
 <div class="rental-foot">

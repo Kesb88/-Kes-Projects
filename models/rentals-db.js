@@ -1,3 +1,4 @@
+
 var rentals =  [
       {
         headline:"Yellowhead Trail", 
@@ -133,6 +134,10 @@ var rentals =  [
         featuredRentals: false
       }
   ];
+
+  module.exports = rentals;
+
+/*
 module.exports.getRentalsByCityAndProvince = function(){
     const allRentals = {};
 
@@ -161,3 +166,4 @@ module.exports.getFeaturedRentals = function(){
     }
     return filtered;
 };
+*/

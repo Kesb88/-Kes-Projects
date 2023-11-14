@@ -1,18 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const rentals = require("../models/rentals-db");
+const rentalModel = require("../models/rentalModel");
 const userModel = require("../models/userModel");
 const bcryptjs = require("bcryptjs");
 
 router.get("/", (req, res) => {
     const role = req.session.role;
-    const featuredRentals = rentals.getFeaturedRentals();
-    res.render("general/home",{
-        rentals: featuredRentals,
-        title: "Libby's",
-        isMain: true,
-        role
-    });
+    rentalModel.find({ featuredRentals: true })
+    .then((featuredRentals) => {
+        console.log(featuredRentals);
+        res.render("general/home",{
+            rentals: featuredRentals,
+            title: "Libby's",
+            isMain: true,
+            role
+        });
+    })
+    .catch(err => {
+        console.error("Error fetching featured rentals", err);
+    })
 });
 
 function isValidEmail(email){
