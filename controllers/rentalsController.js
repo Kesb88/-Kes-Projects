@@ -56,6 +56,22 @@ router.get("/rentals", (req, res) => {
     res.session.destroy();
     res.redirect("/log-in");
 });
+router.get("/add", (req, res) => {
 
+});
+router.post("/add", (req, res) => {
 
+});
+router.get("/edit/:id", (req, res) => {
+
+});
+router.post("/edit/:id", (req, res) => {
+
+});
+router.get("/remove/:id", (req, res) => {
+
+});
+router.post("/remove/:id", (req, res) => {
+
+});
  module.exports = router;
