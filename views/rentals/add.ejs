@@ -10,10 +10,12 @@
       name="headline"
       value="<%= values.headline %>"
       required
-    /><br />
+    />
     <% if(validation.headline) { %>
     <span style="color: red"><%= validation.headline %></span>
     <% } %>
+    <br />
+
     <label for="numSleeps">Number of Sleeps:</label>
     <input
       type="number"
@@ -24,7 +26,6 @@
       required
     />
     <br />
-
     <label for="numBedrooms">Number of Bedrooms:</label>
     <input
       type="number"
@@ -62,8 +63,17 @@
     <input type="text" id="province" name="province" required /> <br />
 
     <label for="imageUrl">Upload Image:</label>
-    <input type="file" id="imageUrl" name="imageUrl" required /> <br />
-
+    <input
+      type="file"
+      id="imageUrl"
+      name="imageUrl"
+      value=" <%= values.imageUrl %>"
+      required
+    />
+    <% if(validation.imageUrl) { %>
+    <span style="color: red"><%= validation.imageUrl %></span>
+    <% } %>
+    <br />
     <label for="featuredRental">Featured Rental:</label>
     <input
       type="checkbox"

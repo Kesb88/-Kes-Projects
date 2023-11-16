@@ -84,6 +84,7 @@ router.get("/add", (req, res) => {
 
 });
 router.post("/add", (req, res) => {
+  const role = req.session.role;
  
   let passedValidation = true;
   let validation = [];
@@ -106,10 +107,30 @@ router.post("/add", (req, res) => {
       res.render("rentals/add", {
         title: "Add Rentals",
         values: req.body,
-        validation
+        validation,
+        role
       });
     }
     else{
+      const extensions = ['.jpeg', '.png', '.gif', '.jpg'];
+      const rentalImage = req.files.imageUrl;
+      const { name, ext } =  path.parse(rentalImage.name);
+
+      if(!extensions.includes(ext.toLowerCase())){
+        passedValidation = false;
+        validation.imageUrl = "Image format must be '.jpeg', '.png', '.gif', '.jpg'";
+      }
+      const originalFileName = `${name}${ext}`;
+
+      if(!passedValidation){
+        res.render("rentals/add", {
+          title: "Add Rentals",
+          values: req.body,
+          validation,
+          role
+        });
+        return;
+      }     
       const addRental = {
         headline, 
         numSleeps, 
@@ -124,19 +145,29 @@ router.post("/add", (req, res) => {
 
       rentalModel.create(addRental)
       .then((newRental) => {
-        const rentalImage = req.files.imageUrl;
-        let uniqueName = `rental-pic-${newRental._id}${path.parse(rentalImage.name).ext}`;
 
-        rentalImage.mv(`contents/images/${uniqueName}`)
+        rentalImage.mv(`contents/images/${originalFileName}`)
         .then(() => {
           rentalModel.updateOne({
             _id: newRental._id
           }, {
-            imageUrl: uniqueName
+            imageUrl: originalFileName
           })
           .then(() => {
             console.log("Rental image updated");
-            res.redirect("/list");
+            
+            rentalModel.find()
+            .then((rentals) => {
+              res.render("rentals/list", {
+                title: "Rental List",
+                rentals,
+                role,
+                isMain: false
+              });
+            })
+            .catch(err => {
+              console.log("Error rendering updated rentals", err);
+            });
           })
           .catch(err => {
             console.log("Error updating rental image", err);
