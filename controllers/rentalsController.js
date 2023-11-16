@@ -1,6 +1,7 @@
 const express = require("express");
 const rentalModel = require("../models/rentalModel");
 const router = express.Router();
+const path = require("path");
 
 router.get("/rentals", (req, res) => {
   const role = req.session.role;
@@ -47,31 +48,126 @@ router.get("/rentals", (req, res) => {
         res.status(401).send("You are not authorized to view this page");
         return;
     }
-    res.render("rentals/list", {
+    rentalModel.find().sort({ headline: 1 })
+    .then((rentals) => {
+      res.render("rentals/list", {
         title: "Rental List",
+        rentals,
+        isMain: false,
         role
     });
+    })
+   .catch(err => {
+      console.error("Error fetching rentals", err);
+   })
 });
  router.get("/logout", (req, res) => {
     res.session.destroy();
     res.redirect("/log-in");
 });
 router.get("/add", (req, res) => {
+  const values = { 
+    headline: ""
+  }
+  const role = req.session.role;
+  if(!req.session.user || req.session.role !== "clerk"){
+    res.status(401).send("You are not authorized to view this page");
+    return;
+}
+  res.render("rentals/add", {
+    title: "Add Rentals",
+    role,
+    values,
+    validation: {}
+
+  });
 
 });
 router.post("/add", (req, res) => {
+ 
+  let passedValidation = true;
+  let validation = [];
+  const { headline, 
+          numSleeps, 
+          numBedrooms, 
+          numBathrooms, 
+          pricePerNight, 
+          city, 
+          province, 
+          imageUrl, 
+          featuredRentals 
+        } = req.body;
+
+  rentalModel.findOne({ headline })
+  .then((rentalExists) => {
+    if(rentalExists){
+      passedValidation = false;
+      validation.headline = "Headline already exit";
+      res.render("rentals/add", {
+        title: "Add Rentals",
+        values: req.body,
+        validation
+      });
+    }
+    else{
+      const addRental = {
+        headline, 
+        numSleeps, 
+        numBedrooms, 
+        numBathrooms, 
+        pricePerNight, 
+        city, 
+        province, 
+        imageUrl, 
+        featuredRentals
+      };
+
+      rentalModel.create(addRental)
+      .then((newRental) => {
+        const rentalImage = req.files.imageUrl;
+        let uniqueName = `rental-pic-${newRental._id}${path.parse(rentalImage.name).ext}`;
+
+        rentalImage.mv(`contents/images/${uniqueName}`)
+        .then(() => {
+          rentalModel.updateOne({
+            _id: newRental._id
+          }, {
+            imageUrl: uniqueName
+          })
+          .then(() => {
+            console.log("Rental image updated");
+            res.redirect("/list");
+          })
+          .catch(err => {
+            console.log("Error updating rental image", err);
+          })
+        })
+        .catch(err => {
+          console.log("Error adding rental image to folder", err);
+        });
+        console.log("Rental added to database", newRental);
+      })
+      .catch(err => {
+        console.log("Error adding rental to database", err);
+      })
+    }
+  })
+  .catch(err => {
+    console.error("Error checking for existing rental", err);
+  });
 
 });
 router.get("/edit/:id", (req, res) => {
+  const rentalId = req.params.id;
 
 });
 router.post("/edit/:id", (req, res) => {
-
+  const rentalId = req.params.id;
 });
 router.get("/remove/:id", (req, res) => {
-
+  const rentalId = req.params.id;
 });
 router.post("/remove/:id", (req, res) => {
-
+  const rentalId = req.params.id;
 });
  module.exports = router;

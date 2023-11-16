@@ -16,6 +16,7 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express();
 const mongoose = require("mongoose");
 const session = require("express-session");
+const fileUpload = require("express-fileupload");
 // Make contents folder public
 
 const dotenv = require("dotenv");
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 })
 
 app.use(express.urlencoded({ extended: false }));
+app.use(fileUpload());
 
 const generalController = require("./controllers/generalController");
 const rentalsController = require("./controllers/rentalsController");

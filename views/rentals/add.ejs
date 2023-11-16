@@ -1,19 +1,81 @@
-<div class="rental-list">
-  <h2>Rentals Listings</h2>
+<div class="add-rentals">
+  <h2>Add New Rental</h2>
 </div>
-<div class="images-container3">
-  <% rentals.forEach((rental) => { %>
-  <div class="rental-listing">
-    <%- include('../partials/rental', { rental }) %>
-    <ul class="clerk-options">
-      <li><a href="/rentals/add">Add</a></li>
-      <li><a href="/rentals/edit">Edit</a></li>
-      <li><a href="/rentals/remove">Remove</a></li>
-    </ul>
-  </div>
-  <% }); %>
+<div class="form-container">
+  <form action="/rentals/add" method="post" enctype="multipart/form-data">
+    <label for="headline">Headline:</label>
+    <input
+      type="text"
+      id="headline"
+      name="headline"
+      value="<%= values.headline %>"
+      required
+    /><br />
+    <% if(validation.headline) { %>
+    <span style="color: red"><%= validation.headline %></span>
+    <% } %>
+    <label for="numSleeps">Number of Sleeps:</label>
+    <input
+      type="number"
+      id="numSleeps"
+      name="numSleeps"
+      min="0"
+      max="100"
+      required
+    />
+    <br />
+
+    <label for="numBedrooms">Number of Bedrooms:</label>
+    <input
+      type="number"
+      id="numBedrooms"
+      name="numBedrooms"
+      min="0"
+      max="100"
+      required
+    />
+    <br />
+    <label for="numBathrooms">Number of Bathrooms:</label>
+    <input
+      type="number"
+      id="numBathrooms"
+      name="numBathrooms"
+      min="0"
+      max="100"
+      required
+    />
+    <br />
+    <label for="pricePerNight">Price per Night:</label>
+    <input
+      type="number"
+      id="pricePerNight"
+      name="pricePerNight"
+      step="0.01"
+      pattern="^\d+(\.\d{2})?$"
+      required
+    />
+    <br />
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required /> <br />
+
+    <label for="city">Province:</label>
+    <input type="text" id="province" name="province" required /> <br />
+
+    <label for="imageUrl">Upload Image:</label>
+    <input type="file" id="imageUrl" name="imageUrl" required /> <br />
+
+    <label for="featuredRental">Featured Rental:</label>
+    <input
+      type="checkbox"
+      id="featuredRental"
+      name="featuredRental"
+      value="true"
+    /><br />
+
+    <button type="submit">Add Rental</button> <br />
+  </form>
 </div>
-<div class="list-foot">
+<div class="add-foot">
   <footer>
     <hr />
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
