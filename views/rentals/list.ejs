@@ -5,11 +5,23 @@
   <% rentals.forEach((rental) => { %>
   <div class="rental-listing">
     <%- include('../partials/rental', { rental }) %>
-    <ul class="clerk-options">
-      <li><a href="/rentals/add">Add</a></li>
-      <li><a href="/rentals/edit">Edit</a></li>
-      <li><a href="/rentals/remove">Remove</a></li>
-    </ul>
+    <div class="clerk-options">
+      <button type="button" onclick="window.location.href='/rentals/add'">
+        Add
+      </button>
+      <button
+        type="button"
+        onclick="window.location.href='/rentals/edit/<%= rental._id %>'"
+      >
+        Edit
+      </button>
+      <button
+        type="button"
+        onclick="window.location.href='/rentals/remove/<%= rental._id %>'"
+      >
+        Remove
+      </button>
+    </div>
   </div>
   <% }); %>
 </div>

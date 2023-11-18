@@ -316,6 +316,10 @@ router.post("/log-in", (req, res) => {
 });
 
 router.get("/welcome", (req, res) => {
+
+    if(!req.session.user){
+        res.status(401).send("You are not authorized to view this page");
+    }
     res.render("general/welcome",{
         title: "Welcome Page"
     });

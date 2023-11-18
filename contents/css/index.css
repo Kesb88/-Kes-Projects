@@ -332,6 +332,10 @@ img{
     font-size: 12px;
     padding: 35px;
 }
+.edit-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
 .add-foot footer{
     font-size: 12px;
     padding: 35px;
@@ -484,29 +488,24 @@ hr{
 }
 .clerk-options {
     display: flex;
-    list-style: none;
-    padding: 0;
     justify-content: center;
- 
-  }  
-.clerk-options li {
     margin-top: 10px;
-    margin: 5px;
-  }  
-.clerk-options li a {
-    display: inline-block;
-    text-decoration: none;
-    padding: 8px 16px;
-    border: 1px solid black;
-    color: #4169E1;
+  }
+.clerk-options button{
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: dodgerblue;
     border-radius: 4px;
     transition: all 0.3s linear;
-  }
-.clerk-options li a:hover {
-    transform: scale(1.1);
+}
+.clerk-options button:hover{
     background-color: #4169E1;
-    color: #fff;
-  }
+    transform: scale(1.2);
+}
 .images-container2{
     max-width: 100%;
     max-height: 100%;
@@ -557,6 +556,24 @@ html{
 .back-to-top:hover span{
     transform: translateY(-4px);
 }
+.rental-message{
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+    margin-top: 200px;
+    font-size: x-large;
+}
+.error-container h1{
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+    margin-top: 200px;
+    font-size: 50px;
+}
+.error-container p{
+    text-align: center;
+    font-size: 20px;
+}
 .form-container{
     padding: 5px;
     margin-left: 450px;  
@@ -587,6 +604,18 @@ html{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .add-rentals h2{
+    font-size: 50px;
+    font-weight: bold;
+}
+.edit-rentals{
+    margin: 20px;
+    margin-bottom: 40px;
+    color: #4169E1;
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.edit-rentals h2{
     font-size: 50px;
     font-weight: bold;
 }

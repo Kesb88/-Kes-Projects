@@ -67,7 +67,8 @@ router.get("/rentals", (req, res) => {
 });
 router.get("/add", (req, res) => {
   const values = { 
-    headline: ""
+    headline: "",
+    imageUrl: ""
   }
   const role = req.session.role;
   if(!req.session.user || req.session.role !== "clerk"){
@@ -154,29 +155,23 @@ router.post("/add", (req, res) => {
             imageUrl: originalFileName
           })
           .then(() => {
-            console.log("Rental image updated");
-            
+            console.log("Rental image added to list page"); 
             rentalModel.find()
-            .then((rentals) => {
-              res.render("rentals/list", {
-                title: "Rental List",
-                rentals,
-                role,
-                isMain: false
-              });
+            .then(() => {
+              res.redirect("/rentals/list");
             })
             .catch(err => {
-              console.log("Error rendering updated rentals", err);
+              console.log("Error rendering adding rentals", err);
             });
           })
           .catch(err => {
-            console.log("Error updating rental image", err);
+            console.log("Error adding rental image", err);
           })
         })
         .catch(err => {
           console.log("Error adding rental image to folder", err);
         });
-        console.log("Rental added to database", newRental);
+        console.log("Rental added to database");
       })
       .catch(err => {
         console.log("Error adding rental to database", err);
@@ -189,14 +184,125 @@ router.post("/add", (req, res) => {
 
 });
 router.get("/edit/:id", (req, res) => {
+
+  const values = {
+    imageUrl: ""
+  }
   const rentalId = req.params.id;
+  const role = req.session.role;
+
+  if(!req.session.user || req.session.role !== "clerk"){
+    res.status(401).send("You are not authorized to view this page");
+    return;
+}
+  rentalModel.findById(rentalId)
+    .then((rentals) => {
+      if(!rentals){
+        console.log("Rentals not found");
+      }
+      console.log("Rentals found", rentals);
+      res.render("rentals/edit", {
+        title: "Edit Rental",
+        values,
+        rentals,
+        role,
+        validation: {}
+      });
+    })
+    .catch(err => {
+      console.log("Error fetching rentals for edit page", err);
+    })
 
 });
 router.post("/edit/:id", (req, res) => {
+
   const rentalId = req.params.id;
+  const role = req.session.role;
+  const updatedRental = req.body;
+
+  let passedValidation = true;
+  let validation = [];
+
+
+  const extensions = ['.jpeg', '.png', '.gif', '.jpg'];
+  const rentalImage = req.files.imageUrl;
+  const { name, ext } =  path.parse(rentalImage.name);
+
+    if(!extensions.includes(ext.toLowerCase())){
+      passedValidation = false;
+      validation.imageUrl = "Image format must be '.jpeg', '.png', '.gif', '.jpg'";
+    }
+    const originalFileName = `${name}${ext}`;
+
+    if(!passedValidation){
+
+      res.render("rentals/edit", {
+        title: "Edit Rentals",
+        values: req.body,
+        validation: {},
+        role,
+        rentals: {}
+      });
+      return;
+    } 
+
+  rentalImage.mv(`contents/images/${originalFileName}`)
+    .then(() => {
+      rentalModel.updateOne({
+        imageUrl: originalFileName
+      })
+      .then(() => {
+
+        rentalModel.findByIdAndUpdate(rentalId , updatedRental, { new: true })
+        .then((updatedRental) => {
+          if(!updatedRental){
+            console.log("Rental image not found");
+            return;
+          }      
+          console.log("Rental image updated");
+          rentalModel.find()
+          .then(() => {
+            res.redirect("/rentals/list");
+          })
+          .catch(err => {
+            console.log("Error loading page", err);
+          }); 
+        })
+        .catch(err => {
+          console.log("Error updating rental data", err); 
+          res.render("rentals/edit", {
+            title: "Rental List",
+            rentals: {},
+            values: req.body,
+            role,
+            validation: {}
+          });     
+        });
+      })
+      .catch(err => {
+        console.log("Rental image failed to update", err);
+      });
+    })
+    .catch(err => {
+      console.log("Error updating image in folder", err);
+    })
+
 });
 router.get("/remove/:id", (req, res) => {
+
+  const role = req.session.role;
   const rentalId = req.params.id;
+
+  rentalModel.findByIdAndRemove(rentalId)
+  .then((removeData) => {
+    if(!removeData){
+      console.log("Rental not found");  
+    }
+
+    deleteImageFile
+  })
+
+
 });
 router.post("/remove/:id", (req, res) => {
   const rentalId = req.params.id;

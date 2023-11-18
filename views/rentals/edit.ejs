@@ -1,19 +1,14 @@
-<div class="add-rentals">
-  <h2>Add New Rental</h2>
+<div class="edit-rentals">
+  <h2>Edit Rental</h2>
 </div>
 <div class="form-container">
-  <form action="/rentals/add" method="post" enctype="multipart/form-data">
+  <form
+    action="/rentals/edit/<%= rentals._id %>"
+    method="post"
+    enctype="multipart/form-data"
+  >
     <label for="headline">Headline:</label>
-    <input
-      type="text"
-      id="headline"
-      name="headline"
-      value="<%= values.headline %>"
-      required
-    />
-    <% if(validation.headline) { %>
-    <span style="color: red"><%= validation.headline %></span>
-    <% } %>
+    <input type="text" id="headline" name="headline" required />
     <br />
 
     <label for="numSleeps">Number of Sleeps:</label>
@@ -82,10 +77,10 @@
       value="true"
     /><br />
 
-    <button type="submit">Add Rental</button> <br />
+    <button type="submit">Update</button> <br />
   </form>
 </div>
-<div class="add-foot">
+<div class="edit-foot">
   <footer>
     <hr />
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
