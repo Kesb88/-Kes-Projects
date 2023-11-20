@@ -2,6 +2,7 @@ const express = require("express");
 const rentalModel = require("../models/rentalModel");
 const router = express.Router();
 const path = require("path");
+const fs  = require("fs");
 
 router.get("/rentals", (req, res) => {
   const role = req.session.role;
@@ -293,18 +294,54 @@ router.get("/remove/:id", (req, res) => {
   const role = req.session.role;
   const rentalId = req.params.id;
 
-  rentalModel.findByIdAndRemove(rentalId)
-  .then((removeData) => {
-    if(!removeData){
-      console.log("Rental not found");  
-    }
-
-    deleteImageFile
-  })
-
+  rentalModel.findById(rentalId)
+    .then((rentals) => {
+      if(!rentals){
+        console.log("Rental not found");
+        return;
+      }
+      res.render("rentals/remove",{
+        title: "Remove Rental",
+        rentals,
+        role
+      }); 
+    })
+    .catch(err => {
+      console.log("Error finding rental", err);
+    })
 
 });
 router.post("/remove/:id", (req, res) => {
+
   const rentalId = req.params.id;
+  const removeRental = req.body.confirmed === "true";
+
+  if(!removeRental){
+    console.log("No confirmation provided");
+    res.redirect("/rentals/list");
+    return;
+  }
+
+  rentalModel.findByIdAndDelete(rentalId)
+  .then((removeData) => {
+    if(!removeData){
+      console.log("Rental not found"); 
+      res.redirect("/rentals/list");
+      return; 
+    }
+    const removeImage = path.join(__dirname,"../contents/images/", removeData.imageUrl);
+
+    if (fs.existsSync(removeImage)) {
+      fs.unlinkSync(removeImage);
+      console.log("Rental deleted successfully");
+      res.redirect("/rentals/list");
+    } else {
+      console.log("Image file not found");
+    }
+  })
+  .catch(err => {
+    console.log("Error removing rental", err);
+    res.redirect("/rentals/list");
+  })
 });
  module.exports = router;

@@ -104,17 +104,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="/rentals/rentals">Rentals</a>
+            <% if(user) { %>
+            <a class="nav-link" href="/log-in">Logout</a>
+            <% } else { %>
             <a class="nav-link" href="/sign-up">Sign-up</a>
             <a class="nav-link" href="/log-in">Log-in</a>
+            <% } %>
+            <a class="nav-link" href="/rentals/rentals">Rentals</a>
           </div>
         </div>
       </div>
     </nav>
-    By submitting this assignment I declare that this assignment is my own work
-    in accordance with the Seneca Academic Policy. <br />No part of this
-    assignment has been copied manually or electronically from any other source
-    (including web sites) or distributed to other students.
+    <p>
+      By submitting this assignment I declare that this assignment is my own
+      work in accordance with the Seneca Academic Policy. <br />No part of this
+      assignment has been copied manually or electronically from any other
+      source (including web sites) or distributed to other students.
+    </p>
     <p>&copy Kester Bascillo, kbascillo@myseneca.ca, WEB322 Winter 2023</p>
     <div class="credits">
       <p>
