@@ -314,7 +314,7 @@ img{
     position: absolute;
     left: 0;
     right: 0;
-    margin-top: 250px;
+    margin-top: 300px;
 }
 .login-foot footer{
     font-size: 12px;
@@ -344,15 +344,13 @@ img{
     font-size: 12px;
     padding: 35px;
 }
-.rental-list-foot footer{
+.list-foot footer{
     font-size: 12px;
     padding: 35px;
-
 }
-.rental-list-foot footer p{
+.p-graph-footer{
     font-size: 12px;
-    padding: 35px;
-    
+    margin-left:35px;
 }
 hr{
     margin-bottom: 20px;
@@ -653,6 +651,25 @@ html{
     background-color: #4169E1;
     transform: scale(1.2);
 }
+.rental-cart button{
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 15px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: dodgerblue;
+    border-radius: 4px;
+    transition: all 0.3s linear;
+}
+.rental-cart button:hover{
+    background-color: #4169E1;
+    transform: scale(1.2);
+}
+.rental-cart{
+    display: flex;
+    justify-content: center;
+}
 .rental-image{
     max-width: 50%;
     max-height: 50%;
@@ -756,7 +773,7 @@ html{
     }
     .home-foot footer{
         font-size: 10px;
-        margin-top: 1180px;
+        margin-top: 1470px;
     }
     .fa-facebook{
         font-size: 20px;
@@ -770,6 +787,12 @@ html{
     .fa-youtube{
         font-size: 20px;
     }
+    .credits a{
+        font-size: 6px;
+    }
+    .p-graph-footer{
+        font-size: 10px;
+    }    
     .icons a{
         height: 30px;
         width: 30px;

@@ -136,34 +136,3 @@ var rentals =  [
   ];
 
   module.exports = rentals;
-
-/*
-module.exports.getRentalsByCityAndProvince = function(){
-    const allRentals = {};
-
-    for (const rental of rentals) {
-      const { city, province } = rental;
-      const cityProvince = `${city}, ${province}`;
-  
-      if (!allRentals[cityProvince]) {
-        allRentals[cityProvince] = {
-          cityProvince: cityProvince,
-          rentals: [],
-        };
-      }
-      allRentals[cityProvince].rentals.push(rental);
-    }
-    const allGroupedRentals = Object.values(allRentals);
-    return allGroupedRentals;
-};
-  
-module.exports.getFeaturedRentals = function(){
-    let filtered = [];  
-    for(let i = 0; i < rentals.length; i++){
-        if(rentals[i].featuredRentals){
-            filtered.push(rentals[i]);
-        }
-    }
-    return filtered;
-};
-*/

@@ -330,6 +330,10 @@ router.get("/cart", (req, res) => {
         res.status(401).send("You are not authorized to view this page");
         return;
     }
+    req.session.cart = req.session.cart || [];
+
+    
+
     res.render("general/cart", {
         title: "Rental Cart",
         role

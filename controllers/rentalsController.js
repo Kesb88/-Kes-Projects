@@ -162,7 +162,7 @@ router.post("/add", (req, res) => {
               res.redirect("/rentals/list");
             })
             .catch(err => {
-              console.log("Error rendering adding rentals", err);
+              console.log("Error rendering added rentals", err);
             });
           })
           .catch(err => {
@@ -201,6 +201,17 @@ router.get("/edit/:id", (req, res) => {
       if(!rentals){
         console.log("Rentals not found");
       }
+      const oldImageFile = rentals.imageUrl;
+
+      const oldImage = path.join(__dirname, "../contents/images/", oldImageFile);
+
+        if(fs.existsSync(oldImage)){
+          fs.unlinkSync(oldImage);
+          console.log("Old image has been remove from images folder");
+        }
+        else{
+          console.log("Old image not found");
+        } 
       console.log("Rentals found", rentals);
       res.render("rentals/edit", {
         title: "Edit Rental",
@@ -249,25 +260,15 @@ router.post("/edit/:id", (req, res) => {
 
   rentalImage.mv(`contents/images/${originalFileName}`)
     .then(() => {
-      rentalModel.updateOne({
-        imageUrl: originalFileName
-      })
-      .then(() => {
 
-        rentalModel.findByIdAndUpdate(rentalId , updatedRental, { new: true })
+        rentalModel.findByIdAndUpdate(rentalId, { imageUrl: originalFileName, ...updatedRental }, { new: true })
         .then((updatedRental) => {
           if(!updatedRental){
             console.log("Rental image not found");
             return;
-          }      
+          } 
           console.log("Rental image updated");
-          rentalModel.find()
-          .then(() => {
-            res.redirect("/rentals/list");
-          })
-          .catch(err => {
-            console.log("Error loading page", err);
-          }); 
+          res.redirect("/rentals/list");
         })
         .catch(err => {
           console.log("Error updating rental data", err); 
@@ -283,16 +284,16 @@ router.post("/edit/:id", (req, res) => {
       .catch(err => {
         console.log("Rental image failed to update", err);
       });
-    })
-    .catch(err => {
-      console.log("Error updating image in folder", err);
-    })
-
 });
 router.get("/remove/:id", (req, res) => {
 
   const role = req.session.role;
   const rentalId = req.params.id;
+
+  if(!req.session.user || req.session.role !== "clerk"){
+    res.status(401).send("You are not authorized to view this page");
+    return;
+}
 
   rentalModel.findById(rentalId)
     .then((rentals) => {

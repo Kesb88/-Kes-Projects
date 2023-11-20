@@ -12,6 +12,13 @@
         Sleeps <%= rental.numSleeps %> | <%= rental.numBedrooms %> BR | <%=
         rental.numBathrooms %> BA | C$<%= rental.pricePerNight %>/night
       </p>
+      <div class="rental-cart">
+        <% if(user && role === "customer") { %>
+        <button type="button" onclick="window.location.href='/cart'">
+          Rent
+        </button>
+        <% } %>
+      </div>
     </figure>
   </figcaption>
 </figure>
