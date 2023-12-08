@@ -324,6 +324,22 @@ img{
     font-size: 12px;
     padding: 35px;
 }
+.add-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
+.edit-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
+.list-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
+.remove-foot footer{
+    font-size: 12px;
+    padding: 35px;
+}
 .signup-foot footer{
     font-size: 12px;
     padding: 35px;
@@ -332,25 +348,13 @@ img{
     font-size: 12px;
     padding: 35px;
 }
-.edit-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.remove-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.add-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.list-foot footer{
+.cart-foot footer{
     font-size: 12px;
     padding: 35px;
 }
 .p-graph-footer{
     font-size: 12px;
-    margin-left:35px;
+    margin-left: 30px;
 }
 hr{
     margin-bottom: 20px;
@@ -681,6 +685,104 @@ html{
     font-weight: bold;
     margin-left: 30px;
 }
+.rental-table {
+    width: 60%;
+    margin-top: 100px;
+    margin-left: 220px;
+  }
+  .rental-table button{
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: dodgerblue;
+    border-radius: 4px;
+    transition: all 0.3s linear;
+  }
+  .rental-table button:hover{
+    background-color: #4169E1;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #4169E1;
+    color: white;
+    text-align: left;
+  }
+  
+  .cart-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-info img {
+    max-width: 100px;
+    margin-right: 10px;
+  }
+  .cart-message{
+    font-size: large;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .cart-info div {
+    flex: 1;
+  }
+  
+  .cart-info p {
+    margin: 0;
+  }
+  
+  .cart-info small {
+    color: #4169E1;
+  }
+  
+  input[type="number"] {
+    width: 50px;
+    padding: 5px;
+  }
+  
+  .cart-info a {
+    color: red;
+    text-decoration: none;
+  }
+  
+  .cart-info a:hover {
+    text-decoration: underline;
+  }
+  .order-button{
+    width: 60%;
+    margin-top: 100px;
+    margin-left: 220px;
+  }
+  .order-button button{
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: dodgerblue;
+    border-radius: 4px;
+    transition: all 0.3s linear;
+    float: right;
+  }
+  .order-button button:hover{
+    background-color: #4169E1;
+  }
 @media screen and (max-width: 600px){
     .logo img{
         max-width: 100%;
@@ -773,7 +875,7 @@ html{
     }
     .home-foot footer{
         font-size: 10px;
-        margin-top: 1470px;
+        margin-top: 1500px;
     }
     .fa-facebook{
         font-size: 20px;
@@ -789,10 +891,7 @@ html{
     }
     .credits a{
         font-size: 6px;
-    }
-    .p-graph-footer{
-        font-size: 10px;
-    }    
+    }  
     .icons a{
         height: 30px;
         width: 30px;
@@ -877,10 +976,6 @@ html{
         font-size: 5px;
         color: #4169E1;
     }
-    .rental-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
     .login-foot .navbar-toggler{
         font-size: 5px;
         color: #4169E1;
@@ -889,11 +984,19 @@ html{
         font-size: 5px;
         color: #4169E1;
     }
-    .welcome-foot .navbar-toggler{
+    .rental-foot .navbar-toggler{
         font-size: 5px;
         color: #4169E1;
     }
     .add-foot .navbar-toggler{
+        font-size: 5px;
+        color: #4169E1;
+    }
+    .cart-foot .navbar-toggler{
+        font-size: 5px;
+        color: #4169E1;
+    }
+    .edit-foot .navbar-toggler{
         font-size: 5px;
         color: #4169E1;
     }
@@ -902,10 +1005,6 @@ html{
         color: #4169E1;
     }
     .remove-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .edit-foot .navbar-toggler{
         font-size: 5px;
         color: #4169E1;
     }
@@ -941,7 +1040,37 @@ html{
     .remove-rental h3{
         font-size: 15px;
     }
-
+    .rental-table {
+        width: 80%;
+        margin-top: 60px;
+        margin-left: 60px;
+      }
+    .rental-table tr td{
+        font-size: 12px;
+    }
+      .order-button button{
+        font-size: 10px;
+        float: left;
+        margin-left: 60px;
+      }
+      th {
+        font-size: 12px;
+      }
+      .cart-message{
+        font-size: small;
+      }
+      .rental-table p{
+        font-size: 12px;
+      }
+      .cart-info a {
+      font-size: 10px;
+      }
+      .rental-table button{
+        font-size: 10px;
+      }
+      .rental-table input{
+        font-size: 10px;
+      }
 }
     @media screen and (max-width: 1125px) and (min-width: 600px)
     {
@@ -1032,7 +1161,7 @@ html{
             margin-top: 0px;
             font-size: x-small;
         }
-        .home-foot footer{
+        .foot footer{
             font-size: 10px;
             margin-top: 450px;
         }
@@ -1133,19 +1262,7 @@ html{
             font-size: 5px;
             color: #4169E1;
         }
-        .home-foot .navbar-toggler{
-            font-size: 5px;
-            color: #4169E1;
-        }
-        .rental-foot .navbar-toggler{
-            font-size: 5px;
-            color: #4169E1;
-        }
-        .login-foot .navbar-toggler{
-            font-size: 5px;
-            color: #4169E1;
-        }
-        .signup-foot .navbar-toggler{
+        .foot .navbar-toggler{
             font-size: 5px;
             color: #4169E1;
         }

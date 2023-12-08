@@ -14,9 +14,10 @@
       </p>
       <div class="rental-cart">
         <% if(user && role === "customer") { %>
-        <button type="button" onclick="window.location.href='/cart'">
-          Rent
-        </button>
+        <form action="/cart" method="GET">
+          <input type="hidden" name="rentalId" value="<%= rental._id %>" />
+          <button type="submit">Rent</button>
+        </form>
         <% } %>
       </div>
     </figure>

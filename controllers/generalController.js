@@ -8,7 +8,6 @@ router.get("/", (req, res) => {
     const role = req.session.role;
     rentalModel.find({ featuredRentals: true })
     .then((featuredRentals) => {
-        console.log(featuredRentals);
         res.render("general/home",{
             rentals: featuredRentals,
             title: "Libby's",
@@ -326,19 +325,154 @@ router.get("/welcome", (req, res) => {
 });
 router.get("/cart", (req, res) => {
     const role = req.session.role;
-    if(!req.session.user || req.session.role !== "customer"){
+
+    if (!req.session.user || req.session.role !== "customer") {
         res.status(401).send("You are not authorized to view this page");
         return;
     }
+
+    const rentalId = req.query.rentalId;
+    const removeRental = req.query.removeRental;
+    const updatedNights = req.query.nights;
+    let addRentalMessage = '';
+    let removeRentalMessage = '';
+
+    if (removeRental) {
+        const removedRental = req.session.cart.find(rental => rental.rentalId === removeRental);
+
+        if (removedRental) {
+            req.session.cart = req.session.cart.filter(rental => rental.rentalId !== removeRental);
+            removeRentalMessage = `You removed item from the cart.`;
+        } else {
+            removeRentalMessage = 'Rental not found in the cart.';
+        }
+    }
+
+    if (rentalId) {
+        req.session.cart = req.session.cart || [];
+        const existingRental = req.session.cart.find(rental => rental.rentalId === rentalId);
+
+        if (existingRental) {
+            existingRental.nights = updatedNights;
+        } else {
+            req.session.cart.push({ rentalId, nights: 1});
+        }
+
+        rentalModel.findById(rentalId)
+            .then((addedRental) => {
+                console.log('Fetched rental details:', addedRental);
+                req.session.addedRental = addedRental;
+                addRentalMessage = `You added ${addedRental.headline} to the cart!`;
+                console.log('Rental added to cart:', existingRental);
+            })
+            .catch(err => {
+                console.log('Error adding rental', err);
+            });
+    }
+
+    let subtotal = 0;
+    let tax = 0;
+    let total = 0;
+
+    if (req.session.cart?.length > 0) {
+        rentalModel.find({ _id: { $in: req.session.cart.map(item => item.rentalId) } })
+            .then((cartRentals) => {
+                subtotal = req.session.cart.reduce((acc, rental) => {
+                    const cartRental = cartRentals.find(item => item._id.toString() === rental.rentalId);
+                    if (cartRental) {
+                        return acc + (cartRental.pricePerNight * rental.nights);
+                    }
+                    return acc;
+                }, 0);
+
+                const taxed = process.env.TAX_RATE;
+                tax = subtotal * taxed;
+                total = subtotal + tax;
+
+                res.render("general/cart", {
+                    title: "Rental Cart",
+                    role,
+                    rentals: cartRentals,
+                    cart: req.session.cart,
+                    tax: tax.toFixed(2),
+                    total: total.toFixed(2),
+                    subtotal: subtotal.toFixed(2),
+                    req,
+                    addRentalMessage,
+                    removeRentalMessage
+                });
+
+                req.session.addedRental = null;
+            })
+            .catch(err => {
+                console.log("Error adding rentals into cart", err);
+            });
+    } else {
+        res.render("general/cart", {
+            title: "Rental Cart",
+            role,
+            rentals: [],
+            subtotal,
+            tax,
+            total,
+            req,
+            addRentalMessage,
+            removeRentalMessage,
+        });
+    }
+});
+router.post("/cart", (req, res) => {
+    const user = req.session.user.email;
     req.session.cart = req.session.cart || [];
 
-    
+    const formData = require('form-data');
+    const Mailgun = require('mailgun.js');
+  
+    const API_KEY = process.env.MG_API_KEY;
+    const DOMAIN = process.env.MG_DOMAIN;
+  
+    const mailgun = new Mailgun(formData);
+    const client = mailgun.client({ username: 'api', key: API_KEY });
 
-    res.render("general/cart", {
-        title: "Rental Cart",
-        role
+    const rentalInfo = req.session.cart.map(item => item.rentalId);
 
-    });
+    rentalModel.find({ _id: { $in: rentalInfo }})
+    .then((cartRentals) => {
+    const msg = {
+        to: user,
+        from: "Libby's Rental Properties<bascillok@gmail.com>",
+        subject: "Libby's Rental Team",
+        html: `
+        <h3>Thank you ${req.session.user.firstName}, for placing your order!</h3>
+                    <p>Order Receipt</p>
+                    <ul>
+                        ${req.session.cart.map(cartItem => {
+                            const rental = cartRentals.find(item => item._id.toString() === cartItem.rentalId);
+                            return `
+                                <li>
+                                    <strong>Rental:</strong> ${rental.headline}<br>
+                                    <strong>City:</strong> ${rental.city}<br>
+                                    <strong>Province:</strong> ${rental.province}<br>
+                                    <strong>Number of Nights:</strong> ${cartItem.nights}<br>
+                                    <strong>Price per Night:</strong> $${(rental.pricePerNight).toFixed(2)}<br>
+                                    <strong>Total Price:</strong> $${(rental.pricePerNight * cartItem.nights).toFixed(2)}<br>
+                                </li>
+                                <br>
+                            `;
+                        })}
+                    </ul>
+                `,
+            };
+            client.messages.create(DOMAIN, msg)
+            .then(() => {
+                console.log("Order details sent successfully");
+                req.session.cart = [];
+                res.redirect("/cart");
+            })
+            .catch(err => {
+                console.log("Error sending order details email", err);
+            }); 
+        })
 });
 router.get("/logout", (req, res) => {
     req.session.destroy();

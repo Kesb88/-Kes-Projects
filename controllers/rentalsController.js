@@ -29,8 +29,6 @@ router.get("/rentals", (req, res) => {
         rentalsByCityAndProvince[cityProvince].push(rental);
       });
 
-      console.log(rentalsByCityAndProvince);
-
       res.render("rentals/rentals", {
         rentalsByCityAndProvince,
         title: "Rentals",
@@ -185,33 +183,24 @@ router.post("/add", (req, res) => {
 
 });
 router.get("/edit/:id", (req, res) => {
-
   const values = {
     imageUrl: ""
-  }
+  };
   const rentalId = req.params.id;
   const role = req.session.role;
 
-  if(!req.session.user || req.session.role !== "clerk"){
+  if (!req.session.user || req.session.role !== "clerk") {
     res.status(401).send("You are not authorized to view this page");
     return;
-}
+  }
+
   rentalModel.findById(rentalId)
     .then((rentals) => {
-      if(!rentals){
+      if (!rentals) {
         console.log("Rentals not found");
+        return res.status(404).send("Rental not found");
       }
-      const oldImageFile = rentals.imageUrl;
 
-      const oldImage = path.join(__dirname, "../contents/images/", oldImageFile);
-
-        if(fs.existsSync(oldImage)){
-          fs.unlinkSync(oldImage);
-          console.log("Old image has been remove from images folder");
-        }
-        else{
-          console.log("Old image not found");
-        } 
       console.log("Rentals found", rentals);
       res.render("rentals/edit", {
         title: "Edit Rental",
@@ -223,68 +212,103 @@ router.get("/edit/:id", (req, res) => {
     })
     .catch(err => {
       console.log("Error fetching rentals for edit page", err);
-    })
-
+      res.status(500).send("Internal Server Error");
+    });
 });
-router.post("/edit/:id", (req, res) => {
 
+router.post("/edit/:id", (req, res) => {
   const rentalId = req.params.id;
   const role = req.session.role;
   const updatedRental = req.body;
 
-  let passedValidation = true;
-  let validation = [];
-
-
   const extensions = ['.jpeg', '.png', '.gif', '.jpg'];
   const rentalImage = req.files.imageUrl;
-  const { name, ext } =  path.parse(rentalImage.name);
 
-    if(!extensions.includes(ext.toLowerCase())){
-      passedValidation = false;
-      validation.imageUrl = "Image format must be '.jpeg', '.png', '.gif', '.jpg'";
-    }
-    const originalFileName = `${name}${ext}`;
+  if (rentalImage) {
+    const { name, ext } = path.parse(rentalImage.name);
 
-    if(!passedValidation){
-
+    if (!extensions.includes(ext.toLowerCase())) {
       res.render("rentals/edit", {
         title: "Edit Rentals",
         values: req.body,
-        validation: {},
+        validation: { imageUrl: "Image format must be '.jpeg', '.png', '.gif', '.jpg'" },
         role,
         rentals: {}
       });
       return;
-    } 
+    }
 
-  rentalImage.mv(`contents/images/${originalFileName}`)
-    .then(() => {
+    const originalFileName = `${name}${ext}`;
+
+    rentalImage.mv(`contents/images/${originalFileName}`)
+      .then(() => {
+        rentalModel.findById(rentalId)
+          .then((rentals) => {
+            if (rentals) {
+              const oldImageFile = rentals.imageUrl;
+              const oldImage = path.join(__dirname, "../contents/images/", oldImageFile);
+
+              if (fs.existsSync(oldImage)) {
+                fs.unlinkSync(oldImage);
+                console.log("Old image has been removed from images folder");
+              } else {
+                console.log("Old image not found");
+              }
+            }
+          })
+          .catch(err => {
+            console.log("Error fetching rental for deleting old image", err);
+          });
 
         rentalModel.findByIdAndUpdate(rentalId, { imageUrl: originalFileName, ...updatedRental }, { new: true })
-        .then((updatedRental) => {
-          if(!updatedRental){
-            console.log("Rental image not found");
-            return;
-          } 
-          console.log("Rental image updated");
-          res.redirect("/rentals/list");
-        })
-        .catch(err => {
-          console.log("Error updating rental data", err); 
-          res.render("rentals/edit", {
-            title: "Rental List",
-            rentals: {},
-            values: req.body,
-            role,
-            validation: {}
-          });     
-        });
+          .then((updatedRental) => {
+            if (!updatedRental) {
+              console.log("Rental image not found");
+              res.status(404).send("Rental not found");
+            } else {
+              console.log("Rental image updated");
+              res.redirect("/rentals/list");
+            }
+          })
+          .catch(err => {
+            console.log("Error updating rental data", err);
+            res.render("rentals/edit", {
+              title: "Rental List",
+              rentals: {},
+              values: req.body,
+              role,
+              validation: {}
+            });
+          });
       })
       .catch(err => {
         console.log("Rental image failed to update", err);
+        res.status(500).send("Internal Server Error");
       });
+  } else {
+    rentalModel.findByIdAndUpdate(rentalId, updatedRental, { new: true })
+      .then((updatedRental) => {
+        if (!updatedRental) {
+          console.log("Rental image not found");
+          res.status(404).send("Rental not found");
+        } else {
+          console.log("Rental data updated");
+          res.redirect("/rentals/list");
+        }
+      })
+      .catch(err => {
+        console.log("Error updating rental data", err);
+        res.render("rentals/edit", {
+          title: "Rental List",
+          rentals: {},
+          values: req.body,
+          role,
+          validation: {}
+        });
+      });
+  }
 });
+
 router.get("/remove/:id", (req, res) => {
 
   const role = req.session.role;
@@ -318,7 +342,6 @@ router.post("/remove/:id", (req, res) => {
   const removeRental = req.body.confirmed === "true";
 
   if(!removeRental){
-    console.log("No confirmation provided");
     res.redirect("/rentals/list");
     return;
   }

@@ -1,1 +1,148 @@
-<h3>Welcome! This is your shopping cart</h3>
+<% if (addRentalMessage) { %>
+<div class="cart-message">
+  <p><%= addRentalMessage %></p>
+</div>
+<% } %> <% if (removeRentalMessage) { %>
+<div class="cart-message">
+  <p><%= removeRentalMessage %></p>
+</div>
+<% } %>
+<div class="rental-table">
+  <table>
+    <tr>
+      <th>Rental</th>
+      <th>Nights</th>
+      <th>Price</th>
+    </tr>
+    <% if(rentals.length > 0) { %> <% rentals.forEach(rental => { %>
+    <tr>
+      <td>
+        <div class="cart-info">
+          <img src="images/<%= rental.imageUrl %>" alt="Rental Thumbnail" />
+          <div>
+            <p><%= rental.headline %></p>
+            <p><%= rental.city %> <%= rental.province %></p>
+            <a href="/cart?removeRental=<%= rental._id %>">Remove</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <form action="/cart" method="get">
+          <input type="hidden" name="rentalId" value="<%= rental._id %>" />
+          <input
+            type="number"
+            min="1"
+            name="nights"
+            value="<%= rental.nights || 1 %>"
+          />
+          <button type="submit" name="update">Update</button>
+        </form>
+      </td>
+      <td>$<%=(rental.pricePerNight * (rental.nights || 1)).toFixed(2)%></td>
+    </tr>
+    <% }) %>
+    <tr>
+      <td colspan="2">Subtotal</td>
+      <td>$<%= rentals.length > 0 ? subtotal : '0.00' %></td>
+    </tr>
+    <tr>
+      <td colspan="2">Tax:</td>
+      <td>$<%= rentals.length > 0 ? tax : '0.00' %></td>
+    </tr>
+    <tr>
+      <td colspan="2">Total:</td>
+      <td>$<%= rentals.length > 0 ? total : '0.00' %></td>
+    </tr>
+    <% } else { %>
+    <tr>
+      <td><p>Empty shopping cart</p></td>
+    </tr>
+    <% } %>
+  </table>
+<td>
+    <tr>
+</div>
+<div class="order-button">
+  <form action="/cart" method="post">
+    <button type="submit" name="placeOrder">Place Order</button>
+  </form>
+</div>
+    </tr>
+</td>
+<div class="cart-foot">
+    <footer>
+      <hr />
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Home</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <% if(user) { %>
+                <a class="nav-link" href="/log-in">Logout</a>
+                <% } else { %>
+                <a class="nav-link" href="/sign-up">Sign-up</a>
+                <a class="nav-link" href="/log-in">Log-in</a>
+                <% } %>
+                <a class="nav-link" href="/rentals/rentals">Rentals</a>
+              </div>
+          </div>
+        </div>
+      </nav>
+      <p>
+      By submitting this assignment I declare that this assignment is my own work
+      in accordance with the Seneca Academic Policy. <br />No part of this
+      assignment has been copied manually or electronically from any other source
+      (including web sites) or distributed to other students.</p>
+      <p>&copy Kester Bascillo, kbascillo@myseneca.ca, WEB322 Winter 2023</p>
+      <div class="credits">
+        <p>
+          Credits:
+          <a
+            href="https://pixabay.com/users/paulbr75-2938186/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3123295"
+            >Paul Brennan</a
+          >
+          <a
+            href="https://pixabay.com/users/artisticoperations-4161274/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3248249"
+            >F.Muhammad
+          </a>
+          <a
+            href="https://pixabay.com/users/justoceuti-8259709/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4741595"
+            >Jose Martinez Justo
+          </a>
+          <a
+            href="https://pixabay.com/users/richardmc-1834381/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3115234"
+            >Richard Mcall
+          </a>
+          <a
+            href="https://pixabay.com/photos/cottage-trees-path-trail-house-2955582/"
+            >Stanly
+          </a>
+        </p>
+      </div>
+      <div class="icons">
+        <a href="https://www.facebook.com/">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </footer>
+  </div>
