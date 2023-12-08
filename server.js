@@ -26,29 +26,18 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main');
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, "/contents")));
-var MongoDBStore = require('connect-mongodb-session')(session); 
 
-var store = new MongoDBStore({
-    uri: 'mongodb://localhost:27017/web322kb-2231',
-    collection: 'mySessions'
-  });
-  store.on('error', function(error) {
-    console.log(error);
-  });
-  
 app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: false,
-    saveUninitialized: true,
-    store
-
+    saveUninitialized: true
 }));
 
 app.use((req, res, next) => {
 
     res.locals.user = req.session.user;
     next();
-})
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());

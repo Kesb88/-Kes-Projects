@@ -422,6 +422,7 @@ router.get("/cart", (req, res) => {
     }
 });
 router.post("/cart", (req, res) => {
+    
     const user = req.session.user.email;
     req.session.cart = req.session.cart || [];
 
