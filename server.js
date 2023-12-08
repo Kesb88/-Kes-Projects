@@ -26,14 +26,12 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main');
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, "/contents")));
-
 app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: false,
-    saveUninitialized: true,
-    store
-}));
+    saveUninitialized: true
 
+}));
 
 app.use((req, res, next) => {
 
