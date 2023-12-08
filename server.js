@@ -40,7 +40,7 @@ app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: true,
-    store
+    store: store
 }));
 
 app.use((req, res, next) => {
