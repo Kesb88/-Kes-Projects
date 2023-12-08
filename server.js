@@ -39,7 +39,8 @@ var store = new MongoDBStore({
 app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store
 }));
 
 app.use((req, res, next) => {
