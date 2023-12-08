@@ -35,19 +35,20 @@ var store = new MongoDBStore({
   store.on('error', function(error) {
     console.log(error);
   });
-
+  
 app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: true,
-    store: store
+    store
+
 }));
 
 app.use((req, res, next) => {
 
     res.locals.user = req.session.user;
     next();
-});
+})
 
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());
