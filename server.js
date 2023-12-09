@@ -37,13 +37,13 @@ app.use(session({
 
 const store = new MongoDBStore({
     uri: 'mongodb://localhost:27017/web322kb-2231',
-    collection: 'users'
+    collection: 'mySession'
   });
 
   store.on('error', function(error) {
     console.log(error);
   });
-  
+
 app.use((req, res, next) => {
 
     res.locals.user = req.session.user;
