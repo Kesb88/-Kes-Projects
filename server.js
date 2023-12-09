@@ -21,9 +21,7 @@ const app = express();
 // Make contents folder public
 
 const store = new MongoDBStore({
-    uri: process.env.MONGODB_CONNECTION,
-    databaseName: 'web322kb-2231',
-    collection: 'mySessions'
+    uri: process.env.MONGODB_CONNECTION
   });
 
   store.on('error', function(error) {
