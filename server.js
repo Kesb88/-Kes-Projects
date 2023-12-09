@@ -27,7 +27,13 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main');
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, "/contents")));
-
+ 
+app.use(session({
+    secret: process.env.SECRET_SESSION,
+    resave: false,
+    saveUninitialized: true,
+    store
+}));
 
 const store = new MongoDBStore({
     uri: 'mongodb://localhost:27017/web322kb-2231',
@@ -38,13 +44,6 @@ const store = new MongoDBStore({
     console.log(error);
   });
   
-app.use(session({
-    secret: process.env.SECRET_SESSION,
-    resave: false,
-    saveUninitialized: true,
-    store
-}));
-
 app.use((req, res, next) => {
 
     res.locals.user = req.session.user;
