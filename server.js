@@ -16,13 +16,25 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require("mongoose");
 const session = require("express-session");
 const fileUpload = require("express-fileupload");
+const MongoDBStore = require('connect-mongodb-session')(session); 
 const app = express();
 // Make contents folder public
+
+const store = new MongoDBStore({
+    uri: MONGODB_CONNECTION,
+    databaseName: 'web322kb-2231',
+    collection: 'mySessions'
+  });
+
+  store.on('error', function(error) {
+    console.log(error);
+  });
   
 app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: true,
+    store: store
 }));
 
 app.use((req, res, next) => {
