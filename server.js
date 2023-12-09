@@ -13,21 +13,12 @@
 const path = require("path");
 const express = require("express");
 const expressLayouts = require('express-ejs-layouts');
-const app = express();
 const mongoose = require("mongoose");
 const session = require("express-session");
 const fileUpload = require("express-fileupload");
 const MongoDBStore = require('connect-mongodb-session')(session); 
+const app = express();
 // Make contents folder public
-
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config/keys.env" });
-
-app.set('view engine', 'ejs');
-app.set('layout', 'layouts/main');
-app.use(expressLayouts);
-app.use(express.static(path.join(__dirname, "/contents")));
-
 
 const store = new MongoDBStore({
     uri: 'mongodb://localhost:27017',
@@ -51,6 +42,14 @@ app.use((req, res, next) => {
     res.locals.user = req.session.user;
     next();
 })
+
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/keys.env" });
+
+app.set('view engine', 'ejs');
+app.set('layout', 'layouts/main');
+app.use(expressLayouts);
+app.use(express.static(path.join(__dirname, "/contents")));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());
