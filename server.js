@@ -30,7 +30,8 @@ app.use(express.static(path.join(__dirname, "/contents")));
 
 
 const store = new MongoDBStore({
-    uri: 'mongodb://localhost:27017/web322kb-2231'
+    uri: 'mongodb://localhost:27017/web322kb-2231',
+    collection: 'users'
   });
   store.on('error', function(error) {
     console.log(error);
