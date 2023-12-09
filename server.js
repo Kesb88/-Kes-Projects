@@ -31,10 +31,10 @@ const store = new MongoDBStore({
   });
   
 app.use(session({
+    store: store,
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: true,
-    store: store
 }));
 
 app.use((req, res, next) => {
