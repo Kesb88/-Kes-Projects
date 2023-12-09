@@ -32,7 +32,10 @@ app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: true,
-    store: store
+    store: store,
+    cookie: {
+        maxAge: 30 * 60 * 1000
+    }
 }));
 
 app.use((req, res, next) => {
