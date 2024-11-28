@@ -1,1290 +1,1252 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-}   
-.header{
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1px 100px;
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
-.navbar a{
-    position: relative;
-    font-size: 18px;
-    color: #4169E1;
-    font-weight: 500;
-    text-decoration: none;
-    margin-left: 40px;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-.navbar a::before{
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #4169E1;
-    transition: .3s;
+.content {
+  flex-grow: 1;
+  padding: 20px;
 }
-.navbar a:hover::before{
-    width: 100%;
 
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1px 100px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
 }
-.navbar a:hover{
-    color: black;
+.navbar a {
+  position: relative;
+  font-size: 18px;
+  color: #4169e1;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-.logo img{
-    max-width: 20%;
-    max-height: 20%;
+.declaration {
+  font-size: 12px;
+  margin-left: 30px;
 }
-img{
-    width: 100%;
+.foot hr {
+  width: 75%;
+  margin-left: 13%;
+}
+.credits p {
+  font-size: 12px;
+  margin-left: 30px;
+}
+.navbar a::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #4169e1;
+  transition: 0.3s;
+}
+.navbar a:hover::before {
+  width: 100%;
+}
+.navbar a:hover {
+  color: black;
+}
+.logo img {
+  max-width: 20%;
+  max-height: 20%;
+}
+img {
+  width: 100%;
 }
 .banner {
-    position: relative;
-    width: 100%;
-    height: 70vh;
-    background: url("/images/house.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    color: white;
-  }
-  
-  .banner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 0;
-  }
-  
-  .banner-content {
-    z-index: 1;
-    text-align: left;
-    padding-left: 20px;
-  }
-  
-  .banner h1, .banner p {
-    color: white; 
-  }
-.banner h1{
-    margin-left: 50px;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    position: relative;
-    padding: 10px;
-    font-size: 60px;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: url("/images/house.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: white;
 }
-.banner p{
-    margin-left: 50px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    position: relative;
-    float: left;
-    padding-left: 50px;
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
 }
-.banner button{
-    border: 1px solid white;
-    background: none;
-    padding: 10px 20px;
-    margin-left: 20px;
-    font-size: 20px;
-    color: white;
-    position: relative;
-    transition: 0.8s;
-    border-radius: 20px;
+
+.banner-content {
+  z-index: 1;
+  text-align: left;
+  padding-left: 20px;
 }
-.banner button:hover{
-    color: #4169E1;
+
+.banner h1,
+.banner p {
+  color: white;
 }
-.banner2{
-    position: relative;
-    width: 100%;
-    height: 70vh;
-    background: url("/images/welcome.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    color: white;
+.banner h1 {
+  margin-left: 50px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  position: relative;
+  padding: 10px;
+  font-size: 60px;
+}
+.banner p {
+  margin-left: 50px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  float: left;
+  padding-left: 50px;
+}
+.banner button {
+  border: 1px solid white;
+  background: none;
+  padding: 10px 20px;
+  margin-left: 20px;
+  font-size: 20px;
+  color: white;
+  position: relative;
+  transition: 0.8s;
+  border-radius: 20px;
+}
+.banner button:hover {
+  color: #4169e1;
+}
+.banner2 {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: url("/images/welcome.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: white;
 }
 .banner2::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+.banner2 h1 {
+  margin-left: 50px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  position: relative;
+  padding: 10px;
+  font-size: 80px;
+}
+.container3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-us h3 {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  margin-top: 60px;
+  text-align: center;
+}
+.about-us p {
+  font-size: medium;
+  text-align: center;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.about-us button {
+  border: 1px solid white;
+  background: #4169e1;
+  padding: 10px 30px;
+  margin-left: 20px;
+  font-size: 20px;
+  color: black;
+  transition: 0.8s;
+  border-radius: 10px;
+  margin-left: 45%;
+}
+.about-us button:hover {
+  color: white;
+}
+.one {
+  margin-top: 30px;
+  width: 30px;
+  height: 30px;
+}
+.two {
+  margin-top: 30px;
+  width: 30px;
+  height: 30px;
+}
+.three {
+  margin-top: 30px;
+  width: 30px;
+  height: 30px;
+}
+.four {
+  margin-top: 30px;
+  width: 30px;
+  height: 30px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+  margin: 40px;
+  margin-left: 100px;
+}
+.words {
+  margin: 100px;
+  font-size: 25px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.main-container {
+  display: flex;
+}
+.container1 {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  margin: 5px;
+  margin-left: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.one-text h2 {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #4169e1;
+  font-weight: bold;
+}
+.one-text p {
+  font-size: small;
+}
+.two-text h2 {
+  display: inline-block;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #4169e1;
+  font-weight: bold;
+}
+.two-text p {
+  font-size: small;
+}
+.three-text h2 {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #4169e1;
+  font-weight: bold;
+}
+.three-text p {
+  font-size: small;
+}
+.four-text h2 {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #4169e1;
+  font-weight: bold;
+}
+.four-text p {
+  font-size: small;
+}
+.images-container {
+  display: flex;
+  float: left;
+}
+.sub-header h2 {
+  font-size: large;
+  margin-left: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.images-container img {
+  border-radius: 5px;
+  width: 250px;
+  height: 150px;
+  margin: 20px;
+}
+.pics {
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.fig1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: x-small;
+  font-weight: bold;
+  margin-left: 30px;
+  line-height: 0%;
+}
+.fig2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+}
+.icons {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
+.icons a {
+  height: 50px;
+  width: 50px;
+  background-color: #f5f6fa;
+  border-radius: 25px;
+  text-align: center;
+  margin: 10px;
+  line-height: 65px;
+  margin-right: 20px;
+}
+.icons a i {
+  transition: all 0.3s linear;
+}
+.icons a:hover i {
+  transform: scale(1.4);
+  color: #4169e1;
+}
+hr {
+  margin-bottom: 20px;
+}
+.fa-facebook {
+  font-size: 30px;
+  color: black;
+}
+.fa-instagram {
+  font-size: 30px;
+  color: black;
+}
+.fa-x-twitter {
+  font-size: 30px;
+  color: black;
+}
+.fa-youtube {
+  font-size: 30px;
+  color: black;
+}
+.menu {
+  font-size: 15px;
+  text-align: center;
+  padding: 1px 400px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+}
+.menu a {
+  transition: all 0.3s linear;
+  color: black;
+}
+.menu a:hover {
+  transform: scale(1.4);
+  color: #4169e1;
+}
+.credits a {
+  font-size: 10px;
+  text-align: left;
+  display: inline-block;
+  margin: 10px;
+  color: black;
+  transition: all 0.3s linear;
+}
+.credits a:hover {
+  transform: scale(1.4);
+  color: #4169e1;
+}
+.sign-up {
+  width: 300px;
+  padding: 10px;
+  margin: 8% auto 0;
+  text-align: center;
+}
+.sign-up h1 {
+  color: #4169e1;
+  margin-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+.input-box {
+  border-radius: 30px;
+  padding: 20px;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #4169e1;
+}
+.sign-up span {
+  margin: 10px;
+}
+.sign-up p {
+  font-size: 10px;
+}
+.signup-btn {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+}
+.sign-up button {
+  font: 1em sans-serif;
+  color: black;
+  transition: all 0.3s linear;
+}
+.sign-up button:hover {
+  color: #4169e1;
+  transform: scale(1.2);
+}
+.login {
+  width: 300px;
+  padding: 10px;
+  margin: 8% auto 0;
+  text-align: center;
+}
+.login h1 {
+  color: #4169e1;
+  margin-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+.login-btn {
+  width: 150px;
+  padding: 10px;
+  margin: 10px;
+}
+.login button {
+  font: 1em sans-serif;
+  color: black;
+  transition: all 0.3s linear;
+}
+.login button:hover {
+  color: #4169e1;
+  transform: scale(1.2);
+}
+.cityProv-header {
+  margin: 20px;
+  margin-bottom: 40px;
+  color: #4169e1;
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.cityProv-header h2 {
+  font-size: 50px;
+  font-weight: bold;
+}
+.rental-list {
+  margin: 20px;
+  margin-bottom: 40px;
+  color: #4169e1;
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.rental-list h2 {
+  font-size: 50px;
+  font-weight: bold;
+}
+.clerk-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.clerk-options button {
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+}
+.clerk-options button:hover {
+  background-color: #4169e1;
+  transform: scale(1.2);
+}
+.images-container2 {
+  max-width: 100%;
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  margin: 40px;
+}
+.images-container3 {
+  max-width: 100%;
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  margin: 40px;
+}
+.fig4 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+html {
+  scroll-behavior: smooth;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4169e1;
+  border-radius: 20%;
+  padding: 0.5rem;
+  height: 3%;
+  text-decoration: none;
+  transition: 0.2s ease-out;
+}
+.back-to-top span {
+  color: #fff;
+  font-size: 15px;
+  transition: 0.2s ease-out;
+}
+.back-to-top:hover {
+  background-color: black;
+}
+.back-to-top:hover span {
+  transform: translateY(-4px);
+}
+.rental-message {
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  margin-top: 200px;
+  font-size: x-large;
+}
+.error-container h1 {
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  margin-top: 200px;
+  font-size: 50px;
+}
+.error-container p {
+  text-align: center;
+  font-size: 20px;
+}
+.form-container {
+  padding: 5px;
+  margin-left: 450px;
+}
+.form-container label {
+  margin: 10px;
+  width: 200px;
+}
+.form-container button {
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+}
+.form-container button:hover {
+  background-color: #4169e1;
+  transform: scale(1.2);
+}
+.add-rentals {
+  margin: 20px;
+  margin-bottom: 40px;
+  color: #4169e1;
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.add-rentals h2 {
+  font-size: 50px;
+  font-weight: bold;
+}
+.edit-rentals {
+  margin: 20px;
+  margin-bottom: 40px;
+  color: #4169e1;
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.edit-rentals h2 {
+  font-size: 50px;
+  font-weight: bold;
+}
+.remove-rental {
+  text-align: center;
+  margin-top: 100px;
+}
+.remove-rental h3 {
+  font-size: 20px;
+}
+.remove-rental button {
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+}
+.remove-rental button:hover {
+  background-color: #4169e1;
+  transform: scale(1.2);
+}
+.rental-cart button {
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 15px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+}
+.rental-cart button:hover {
+  background-color: #4169e1;
+  transform: scale(1.2);
+}
+.rental-cart {
+  display: flex;
+  justify-content: center;
+}
+.rental-image {
+  max-width: 50%;
+  max-height: 50%;
+  display: inline-block;
+}
+.rental-image p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+.rental-table {
+  width: 60%;
+  margin-top: 100px;
+  margin-left: 220px;
+}
+.rental-table button {
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+}
+.rental-table button:hover {
+  background-color: #4169e1;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4169e1;
+  color: white;
+  text-align: left;
+}
+
+.cart-info {
+  display: flex;
+  align-items: center;
+}
+
+.cart-info img {
+  max-width: 100px;
+  margin-right: 10px;
+}
+.cart-message {
+  font-size: large;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cart-info div {
+  flex: 1;
+}
+
+.cart-info p {
+  margin: 0;
+}
+
+.cart-info small {
+  color: #4169e1;
+}
+
+input[type="number"] {
+  width: 50px;
+  padding: 5px;
+}
+
+.cart-info a {
+  color: red;
+  text-decoration: none;
+}
+
+.cart-info a:hover {
+  text-decoration: underline;
+}
+.order-button {
+  width: 60%;
+  margin-top: 100px;
+  margin-left: 220px;
+}
+.order-button button {
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+  float: right;
+}
+.order-button button:hover {
+  background-color: #4169e1;
+}
+@media screen and (max-width: 600px) {
+  .logo img {
+    max-width: 100%;
+    max-height: 100%;
+    padding-right: 20px;
   }
-.banner2 h1{
-    margin-left: 50px;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    position: relative;
-    padding: 10px;
-    font-size: 80px;
-}
-.container3{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.about-us h3{
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    margin-top: 60px;
-    text-align: center;
-}
-.about-us p{
-   font-size: medium;
-   text-align: center;
-   margin-left: 60px;
-   margin-right: 60px;
-}
-.about-us button{
-    border: 1px solid white;
-    background: #4169E1;
-    padding: 10px 30px;
-    margin-left: 20px;
-    font-size: 20px;
-    color: black;
-    transition: 0.8s;
-    border-radius: 10px;
-    margin-left: 45%;
-}
-.about-us button:hover{
-    color: white;
-}
-.one{
-    margin-top: 30px;
-    width: 30px;
-    height: 30px;
-}
-.two{
-    margin-top: 30px;
-    width: 30px;
-    height: 30px;
-}
-.three{
-    margin-top: 30px;
-    width: 30px;
-    height: 30px;
-}
-.four{
-    margin-top: 30px;
-    width: 30px;
-    height: 30px;
-}
-.wrapper{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 20px;
-    margin: 40px;
-    margin-left:100px;
-}
-.words{
-    margin: 100px;
-    font-size: 25px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.main-container{
-    display: flex;
-}
-.container1{
-    flex: 1;
+  .navbar a {
+    font-size: 10px;
+  }
+  .banner h1 {
+    font-size: 30px;
+  }
+  .banner p {
+    font-size: 8px;
+    margin-left: 30px;
+  }
+  .banner button {
+    margin-left: 100px;
+    font-size: 8px;
+    margin-bottom: 30px;
+  }
+  .banner {
+    width: 100%;
+    height: 30vh;
+  }
+  .banner2 {
+    width: 100%;
+    height: 30vh;
+  }
+  .banner2 h1 {
+    font-size: 30px;
+  }
+  .about-us h3 {
+    font-size: medium;
+  }
+  .about-us p {
+    font-size: small;
+  }
+  .about-us button {
+    font-size: 10px;
+    margin-left: 35%;
+  }
+  .words {
+    line-height: 1.2;
+    margin: 50px;
+    font-size: 12px;
+  }
+  .container1 {
     height: 100%;
     width: 100%;
-    margin: 5px;
-    margin-left: 20px;
-    padding: 20px;
-    margin-top: 20px;
-}
-.one-text h2{
-   font-size: large;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   color: #4169E1;
-   font-weight: bold;
-}
-.one-text p{
-    font-size: small;
-}
-.two-text h2{
-   display: inline-block;
-   font-size: large;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   color: #4169E1;
-   font-weight: bold;
-}
-.two-text p{
-    font-size: small;
-}
-.three-text h2{
-   font-size: large;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   color: #4169E1;
-   font-weight: bold;
-}
-.three-text p{
-    font-size: small;
-}
-.four-text h2{
-   font-size: large;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   color: #4169E1;
-   font-weight: bold;
-}
-.four-text p{
-    font-size: small;
-}
-.images-container{
-    display: flex;
-    float: left;
-}
-.sub-header h2{
-    font-size: large;
-    margin-left: 20px;
-    font-family:sans-serif;
-    font-weight: bold;
-}
-.images-container img{
-    border-radius: 5px;
-    width: 250px;
-    height:150px;
-    margin: 20px;
-}
-.pics{
-    margin-top: 10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.fig1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: x-small;
-    font-weight: bold;
-    margin-left: 30px;
-    line-height: 0%;
-}
-.fig2{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .main-container {
+    margin: 10px;
+    margin-top: -60px;
+    margin-bottom: -20px;
+  }
+  .wrapper {
+    gap: 10px;
+    font-size: 10px;
+    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .one-text h2 {
     font-size: 12px;
-    font-weight: normal;
-}
-.icons{
-    display: flex;
-    justify-content: right;
-    align-items: right;
-}
-.icons a{
-    height: 50px;
-    width: 50px;
+  }
+  .two-text h2 {
+    font-size: 12px;
+  }
+  .three-text h2 {
+    font-size: 12px;
+  }
+  .four-text h2 {
+    font-size: 11px;
+  }
+  .sub-header h2 {
+    font-size: small;
+    margin-left: 130px;
+  }
+  .images-container {
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: 40px;
+  }
+  .pics {
+    margin-top: 0px;
+    font-size: x-small;
+  }
+  .home-foot footer {
+    font-size: 10px;
+    margin-top: 1500px;
+  }
+  .fa-facebook {
+    font-size: 20px;
+  }
+  .fa-instagram {
+    font-size: 20px;
+  }
+  .fa-x-twitter {
+    font-size: 20px;
+  }
+  .fa-youtube {
+    font-size: 20px;
+  }
+  .credits a {
+    font-size: 6px;
+  }
+  .icons a {
+    height: 30px;
+    width: 30px;
     background-color: #f5f6fa;
     border-radius: 25px;
     text-align: center;
     margin: 10px;
-    line-height: 65px;
-    margin-right: 20px;
-}
-.icons a i{
-    transition: all 0.3s linear;
-}
-.icons a:hover i{
-    transform: scale(1.4);
-    color: #4169E1;
-}
-.home-foot footer{
-    font-size: 12px;
-    padding: 35px;
-    text-align: left;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-top: 300px;
-}
-.login-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.rental-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.add-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.edit-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.list-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.remove-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.signup-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.welcome-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.cart-foot footer{
-    font-size: 12px;
-    padding: 35px;
-}
-.p-graph-footer{
-    font-size: 12px;
-    margin-left: 30px;
-}
-hr{
-    margin-bottom: 20px;
-}
-.fa-facebook{
-    font-size: 30px;
-    color: black;
-}
-.fa-instagram{
-    font-size: 30px;
-    color: black;
-}
-.fa-x-twitter{
-    font-size: 30px;
-    color: black;
-}
-.fa-youtube{
-    font-size: 30px;
-    color: black;
-}
-.menu{
+    line-height: 40px;
+  }
+  .cityProv-header h2 {
     font-size: 15px;
-    text-align: center;
-    padding: 1px 400px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 50px;
-}
-.menu a{
-    transition: all 0.3s linear;
-    color: black
-    
-}
-.menu a:hover{
-    transform: scale(1.4);
-    color: #4169E1;
-}
-.credits a{
+    font-weight: bold;
+  }
+  .rental-list h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .images-container2 {
+    max-width: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+    margin: 40px;
+  }
+  .images-container3 {
+    max-width: 80%;
+    max-height: 80%;
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .fig4 {
     font-size: 10px;
-    text-align: left;
-    display: inline-block;
-    margin: 10px;
-    color: black;
-    transition: all 0.3s linear;
-   
-}
-.credits a:hover{
-    transform: scale(1.4);
-    color: #4169E1;
-}
-.sign-up
-{
-    width: 300px;
-    padding: 10px;
-    margin: 8% auto 0;
-    text-align: center;
-    
-}
-.sign-up h1{
-    color: #4169E1;
-    margin-bottom: 20px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-}
-.input-box{
-    border-radius: 30px;
-    padding: 20px;
-    margin: 10px 0;
-    width: 100%;
-    border: 1px solid #4169E1;
-}
-.sign-up span {
-    margin: 10px;
-}
-.sign-up p {
+  }
+  .fig2 {
+    font-size: 8px;
+  }
+  .fig2 p {
     font-size: 10px;
-}
-.signup-btn{
-    width: 200px;
-    padding: 10px;
-    margin: 10px;
-}
-.sign-up button{
-    font: 1em sans-serif;
-    color: black;
-    transition: all 0.3s linear;
-}
-.sign-up button:hover{
-    color: #4169E1;
-    transform: scale(1.2);
-}
-.login
-{
-    width: 300px;
-    padding: 10px;
-    margin: 8% auto 0;
-    text-align: center;
-    
-}
-.login h1{
-    color: #4169E1;
-    margin-bottom: 20px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-}
-.login-btn{
-    width: 150px;
-    padding: 10px;
-    margin: 10px;
-}
-.login button{
-    font: 1em sans-serif;
-    color: black;
-    transition: all 0.3s linear;
-}
-.login button:hover{
-    color: #4169E1;
-    transform: scale(1.2);
-}
-.cityProv-header{
-    margin: 20px;
-    margin-bottom: 40px;
-    color: #4169E1;
-    display: flex;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.cityProv-header h2{
-    font-size: 50px;
-    font-weight: bold;
-}
-.rental-list{
-    margin: 20px;
-    margin-bottom: 40px;
-    color: #4169E1;
-    display: flex;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.rental-list h2{
-    font-size: 50px;
-    font-weight: bold;
-}
-.clerk-options {
-    display: flex;
-    justify-content: center;
+    font-weight: normal;
     margin-top: 10px;
   }
-.clerk-options button{
-    color: white;
-    border: none;
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: dodgerblue;
-    border-radius: 4px;
-    transition: all 0.3s linear;
-}
-.clerk-options button:hover{
-    background-color: #4169E1;
-    transform: scale(1.2);
-}
-.images-container2{
-    max-width: 100%;
-    max-height: 100%;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 20px;
-    margin: 40px;
-}
-.images-container3{
-    max-width: 100%;
-    max-height: 100%;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 20px;
-    margin: 40px;
-}
-.fig4{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 30px;
-}
-html{
-    scroll-behavior: smooth;
-}
-.back-to-top{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4169E1;
-    border-radius: 20%;
-    padding: 0.5rem;
-    height: 3%;
-    text-decoration: none;
-    transition: 0.2s ease-out;
-}
-.back-to-top span{
-    color: #fff;
+  .input-box {
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 50%;
+    border: 1px solid #4169e1;
+  }
+  .sign-up h1 {
     font-size: 15px;
-    transition: 0.2s ease-out;
-}
-.back-to-top:hover{
-    background-color: black;
-}
-.back-to-top:hover span{
-    transform: translateY(-4px);
-}
-.rental-message{
-    text-align: center;
-    font-weight: bold;
-    padding: 20px;
-    margin-top: 200px;
-    font-size: x-large;
-}
-.error-container h1{
-    text-align: center;
-    font-weight: bold;
-    padding: 20px;
-    margin-top: 200px;
-    font-size: 50px;
-}
-.error-container p{
-    text-align: center;
-    font-size: 20px;
-}
-.form-container{
+  }
+  .sign-up p {
+    font-size: 10px;
+  }
+  .sign-up form {
+    font-size: 10px;
+  }
+  .signup-btn {
+    width: 100px;
     padding: 5px;
-    margin-left: 450px;  
-}
-.form-container label{
-    margin: 10px;
+    margin: 5px;
+  }
+  .login h1 {
+    font-size: 15px;
+  }
+  .login-btn {
+    padding: 5px;
+    margin: 5px;
+    width: 60px;
+  }
+  .login form {
+    font-size: 10px;
+  }
+  .login button {
+    font-size: 10px;
+  }
+  .header .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .home-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .login-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .signup-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .rental-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .add-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .cart-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .edit-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .list-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .remove-foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .add-rentals h2 {
+    font-size: 25px;
+  }
+  .edit-rentals h2 {
+    font-size: 25px;
+  }
+  .form-container {
+    padding: 5px;
+    margin-left: 100px;
+  }
+  .form-container label {
+    margin: 5px;
     width: 200px;
-}
-.form-container button{
-    color: white;
-    border: none;
+    font-size: 10px;
+  }
+  .form-container button {
+    width: 100px;
+    padding: 8px;
     margin: 10px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: dodgerblue;
-    border-radius: 4px;
-    transition: all 0.3s linear;
-}
-.form-container button:hover{
-    background-color: #4169E1;
-    transform: scale(1.2);
-}
-.add-rentals{
-    margin: 20px;
-    margin-bottom: 40px;
-    color: #4169E1;
-    display: flex;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.add-rentals h2{
-    font-size: 50px;
-    font-weight: bold;
-}
-.edit-rentals{
-    margin: 20px;
-    margin-bottom: 40px;
-    color: #4169E1;
-    display: flex;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.edit-rentals h2{
-    font-size: 50px;
-    font-weight: bold;
-}
-.remove-rental{
-    text-align: center;
-    margin-top: 100px;
-}
-.remove-rental h3{
-    font-size: 20px;
-}
-.remove-rental button{
-    color: white;
-    border: none;
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: dodgerblue;
-    border-radius: 4px;
-    transition: all 0.3s linear;
-}
-.remove-rental button:hover{
-    background-color: #4169E1;
-    transform: scale(1.2);
-}
-.rental-cart button{
-    color: white;
-    border: none;
-    margin: 10px;
-    padding: 15px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: dodgerblue;
-    border-radius: 4px;
-    transition: all 0.3s linear;
-}
-.rental-cart button:hover{
-    background-color: #4169E1;
-    transform: scale(1.2);
-}
-.rental-cart{
-    display: flex;
-    justify-content: center;
-}
-.rental-image{
-    max-width: 50%;
-    max-height: 50%;
+    font-size: 12px;
+  }
+  .rental-image {
+    max-width: 80%;
+    max-height: 80%;
     display: inline-block;
+  }
+  .rental-image p {
+    font-size: 20px;
+  }
+  .remove-rental h3 {
+    font-size: 15px;
+  }
+  .rental-table {
+    width: 80%;
+    margin-top: 60px;
+    margin-left: 60px;
+  }
+  .rental-table tr td {
+    font-size: 12px;
+  }
+  .order-button button {
+    font-size: 10px;
+    float: left;
+    margin-left: 60px;
+  }
+  th {
+    font-size: 12px;
+  }
+  .cart-message {
+    font-size: small;
+  }
+  .rental-table p {
+    font-size: 12px;
+  }
+  .cart-info a {
+    font-size: 10px;
+  }
+  .rental-table button {
+    font-size: 10px;
+  }
+  .rental-table input {
+    font-size: 10px;
+  }
 }
-.rental-image p{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+@media screen and (max-width: 1125px) and (min-width: 600px) {
+  .logo img {
+    max-width: 30%;
+    max-height: 30%;
+    padding-right: 20px;
+  }
+  .navbar a {
+    font-size: 12px;
+  }
+  .banner h1 {
+    font-size: 30px;
+  }
+  .banner p {
+    font-size: 8px;
+    margin-left: 30px;
+  }
+  .banner button {
+    margin-left: 100px;
+    font-size: 8px;
+    margin-bottom: 30px;
+  }
+  .banner {
+    width: 100%;
+    height: 30vh;
+  }
+  .banner2 {
+    width: 100%;
+    height: 30vh;
+  }
+  .banner2 h1 {
+    font-size: 50px;
+  }
+  .about-us button {
+    font-size: 15px;
+    margin-left: 43%;
+  }
+  .words {
+    line-height: 1.2;
+    margin: 50px;
+    font-size: 12px;
+  }
+  .container1 {
+    height: 100%;
+    width: 100%;
+  }
+  .main-container {
+    margin: 10px;
+    margin-top: -60px;
+    margin-bottom: -20px;
+  }
+  .wrapper {
+    gap: 10px;
+    font-size: 10px;
+    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .one-text h2 {
+    font-size: 12px;
+  }
+  .two-text h2 {
+    font-size: 12px;
+  }
+  .three-text h2 {
+    font-size: 12px;
+  }
+  .four-text h2 {
+    font-size: 11px;
+  }
+  .sub-header h2 {
+    font-size: small;
+    margin-left: 130px;
+  }
+  .images-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    margin-left: 40px;
+  }
+  .images-container img {
+    max-width: 70%;
+    height: 70%;
+  }
+  .pics {
+    margin-top: 0px;
+    font-size: x-small;
+  }
+  .foot footer {
+    font-size: 10px;
+    margin-top: 450px;
+  }
+  .fa-facebook {
+    font-size: 20px;
+  }
+  .fa-instagram {
+    font-size: 20px;
+  }
+  .fa-x-twitter {
+    font-size: 20px;
+  }
+  .fa-youtube {
+    font-size: 20px;
+  }
+  .icons a {
+    height: 30px;
+    width: 30px;
+    background-color: #f5f6fa;
+    border-radius: 25px;
+    text-align: center;
+    margin: 10px;
+    line-height: 40px;
+  }
+  .cityProv-header h2 {
     font-size: 30px;
     font-weight: bold;
-    margin-left: 30px;
-}
-.rental-table {
-    width: 60%;
-    margin-top: 100px;
-    margin-left: 220px;
   }
-  .rental-table button{
-    color: white;
-    border: none;
-    margin: 10px;
-    padding: 6px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: dodgerblue;
-    border-radius: 4px;
-    transition: all 0.3s linear;
+  .rental-list h2 {
+    font-size: 40px;
+    font-weight: bold;
   }
-  .rental-table button:hover{
-    background-color: #4169E1;
+  .images-container2 {
+    max-width: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    margin: 40px;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #4169E1;
-    color: white;
-    text-align: left;
-  }
-  
-  .cart-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .cart-info img {
-    max-width: 100px;
-    margin-right: 10px;
-  }
-  .cart-message{
-    font-size: large;
-    font-weight: normal;
-    text-align: center;
-    margin-top: 40px;
-  }
-  
-  .cart-info div {
-    flex: 1;
-  }
-  
-  .cart-info p {
-    margin: 0;
-  }
-  
-  .cart-info small {
-    color: #4169E1;
-  }
-  
-  input[type="number"] {
-    width: 50px;
-    padding: 5px;
-  }
-  
-  .cart-info a {
-    color: red;
-    text-decoration: none;
-  }
-  
-  .cart-info a:hover {
-    text-decoration: underline;
-  }
-  .order-button{
-    width: 60%;
-    margin-top: 100px;
-    margin-left: 220px;
-  }
-  .order-button button{
-    color: white;
-    border: none;
-    margin: 10px;
-    padding: 6px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: dodgerblue;
-    border-radius: 4px;
-    transition: all 0.3s linear;
-    float: right;
-  }
-  .order-button button:hover{
-    background-color: #4169E1;
-  }
-@media screen and (max-width: 600px){
-    .logo img{
-        max-width: 100%;
-        max-height: 100%;
-        padding-right: 20px;
-    }
-    .navbar a{
-        font-size: 10px;
-    }
-    .banner h1{
-        font-size: 30px;
-    }
-    .banner p{
-        font-size: 8px;
-        margin-left: 30px;
-    }
-    .banner button{
-        margin-left: 100px;
-        font-size: 8px;
-        margin-bottom: 30px;
-    }
-    .banner{
-        width: 100%;
-        height: 30vh;
-    }
-    .banner2{
-        width: 100%;
-        height: 30vh;
-    }
-    .banner2 h1{
-        font-size: 30px;
-    }
-    .about-us h3{
-        font-size: medium;
-    }
-    .about-us p{
-       font-size: small;
-    }
-    .about-us button{
-        font-size: 10px;
-        margin-left: 35%;
-    }
-    .words{
-        line-height: 1.2;
-        margin: 50px;
-        font-size: 12px;
-    }
-    .container1{
-        height: 100%;
-        width: 100%;
-    }
-    .main-container{
-        margin: 10px;
-        margin-top: -60px;
-        margin-bottom: -20px;
-    }
-    .wrapper{
-        gap: 10px;
-        font-size: 10px;
-        margin: 10px;
-        margin-top: 0;
-        margin-bottom: 0;
 
-    }
-    .one-text h2{
-        font-size: 12px;
-    }
-    .two-text h2{
-        font-size: 12px;
-    }
-    .three-text h2{
-        font-size: 12px;
-    }
-    .four-text h2{
-        font-size: 11px;
-    }
-    .sub-header h2{
-        font-size: small;
-        margin-left: 130px;
-    }
-    .images-container{
-        max-width: 100%;
-        height: 100%;
-        display: block;
-        margin-left: 40px;
-    }
-    .pics{
-        margin-top: 0px;
-        font-size: x-small;
-    }
-    .home-foot footer{
-        font-size: 10px;
-        margin-top: 1500px;
-    }
-    .fa-facebook{
-        font-size: 20px;
-    }
-    .fa-instagram{
-        font-size: 20px;
-    }
-    .fa-x-twitter{
-        font-size: 20px;
-    }
-    .fa-youtube{
-        font-size: 20px;
-    }
-    .credits a{
-        font-size: 6px;
-    }  
-    .icons a{
-        height: 30px;
-        width: 30px;
-        background-color: #f5f6fa;
-        border-radius: 25px;
-        text-align: center;
-        margin: 10px;
-        line-height: 40px;
-    }
-    .cityProv-header h2{
-        font-size:15px;
-        font-weight: bold;
-    }
-    .rental-list h2{
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .images-container2{
-        max-width: 100%;
-        max-height: 100%;
-        display: grid;
-        grid-template-columns: auto;
-        gap: 20px;
-        margin: 40px;
-    }
-    .images-container3{
-        max-width: 80%;
-        max-height: 80%;
-        display: grid;
-        grid-template-columns: auto;
-    }
-    .fig4{
-        font-size: 10px;
-    }
-    .fig2{
-        font-size: 8px;
-    }
-    .fig2 p{
-        font-size: 10px;
-        font-weight: normal;
-        margin-top: 10px;
-    }
-    .input-box{
-        border-radius: 30px;
-        padding: 10px;
-        margin: 10px 0;
-        width: 50%;
-        border: 1px solid #4169E1;
-    }
-    .sign-up h1{
-       font-size: 15px;
-    }
-    .sign-up p{
-        font-size: 10px;
-     }
-     .sign-up form{
-        font-size: 10px;
-     }
-     .signup-btn{
-        width: 100px;
-        padding: 5px;
-        margin: 5px;
-    }
-    .login h1{
-       font-size: 15px;
-    }
-    .login-btn{
-        padding: 5px;
-        margin: 5px;
-        width: 60px;
-    }
-    .login form{
-        font-size: 10px;
-    }.login button{
-        font-size: 10px;
-    }
-    .header .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .home-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .login-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .signup-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .rental-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .add-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .cart-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .edit-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .list-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .remove-foot .navbar-toggler{
-        font-size: 5px;
-        color: #4169E1;
-    }
-    .add-rentals h2{
-        font-size: 25px;
-    }
-    .edit-rentals h2{
-        font-size: 25px;
-    }
-    .form-container{
-        padding: 5px;
-        margin-left: 100px;  
-    }
-    .form-container label{
-        margin: 5px;
-        width: 200px;
-        font-size: 10px;
-    }
-    .form-container button{
-        width: 100px;
-        padding: 8px;
-        margin: 10px;
-        font-size: 12px;
-    }
-    .rental-image{
-        max-width: 80%;
-        max-height: 80%;
-        display: inline-block;
-    }
-    .rental-image p{
-        font-size: 20px;
-    }
-    .remove-rental h3{
-        font-size: 15px;
-    }
-    .rental-table {
-        width: 80%;
-        margin-top: 60px;
-        margin-left: 60px;
-      }
-    .rental-table tr td{
-        font-size: 12px;
-    }
-      .order-button button{
-        font-size: 10px;
-        float: left;
-        margin-left: 60px;
-      }
-      th {
-        font-size: 12px;
-      }
-      .cart-message{
-        font-size: small;
-      }
-      .rental-table p{
-        font-size: 12px;
-      }
-      .cart-info a {
-      font-size: 10px;
-      }
-      .rental-table button{
-        font-size: 10px;
-      }
-      .rental-table input{
-        font-size: 10px;
-      }
-}
-    @media screen and (max-width: 1125px) and (min-width: 600px)
-    {
-        .logo img{
-            max-width: 30%;
-            max-height: 30%;
-            padding-right: 20px;
-        }
-        .navbar a{
-            font-size: 12px;
-        }
-        .banner h1{
-            font-size: 30px;
-        }
-        .banner p{
-            font-size: 8px;
-            margin-left: 30px;
-        }
-        .banner button{
-            margin-left: 100px;
-            font-size: 8px;
-            margin-bottom: 30px;
-        }
-        .banner{
-            width: 100%;
-            height: 30vh;
-        }
-        .banner2{
-            width: 100%;
-            height: 30vh;
-        }
-        .banner2 h1{
-            font-size: 50px;
-        }
-        .about-us button{
-            font-size: 15px;
-            margin-left: 43%;
-        }
-        .words{
-            line-height: 1.2;
-            margin: 50px;
-            font-size: 12px;
-        }
-        .container1{
-            height: 100%;
-            width: 100%;
-        }
-        .main-container{
-            margin: 10px;
-            margin-top: -60px;
-            margin-bottom: -20px;
-        }
-        .wrapper{
-            gap: 10px;
-            font-size: 10px;
-            margin: 10px;
-            margin-top: 0;
-            margin-bottom: 0;
-    
-        }
-        .one-text h2{
-            font-size: 12px;
-        }
-        .two-text h2{
-            font-size: 12px;
-        }
-        .three-text h2{
-            font-size: 12px;
-        }
-        .four-text h2{
-            font-size: 11px;
-        }
-        .sub-header h2{
-            font-size: small;
-            margin-left: 130px;
-        }
-        .images-container{
-            display: grid;
-            grid-template-columns: auto auto auto;
-            gap: 20px;
-            margin-left: 40px;
-        }
-        .images-container img{
-            max-width: 70%;
-            height: 70%;
-        }
-        .pics{
-            margin-top: 0px;
-            font-size: x-small;
-        }
-        .foot footer{
-            font-size: 10px;
-            margin-top: 450px;
-        }
-        .fa-facebook{
-            font-size: 20px;
-        }
-        .fa-instagram{
-            font-size: 20px;
-        }
-        .fa-x-twitter{
-            font-size: 20px;
-        }
-        .fa-youtube{
-            font-size: 20px;
-        }
-        .icons a{
-            height: 30px;
-            width: 30px;
-            background-color: #f5f6fa;
-            border-radius: 25px;
-            text-align: center;
-            margin: 10px;
-            line-height: 40px;
-        }
-        .cityProv-header h2{
-            font-size: 30px;
-            font-weight: bold;
-        }
-        .rental-list h2{
-            font-size: 40px;
-            font-weight: bold;
-        }
-        .images-container2{
-            max-width: 100%;
-            max-height: 100%;
-            display: grid;
-            grid-template-columns: auto auto;
-            gap: 20px;
-            margin: 40px;
-        }
-        
-        .fig4{
-            font-size: 20px;
-        }
-        .fig2{
-            font-size: 10px;
-        }
-        .input-box{
-            border-radius: 30px;
-            padding: 10px;
-            margin: 10px 0;
-            width: 50%;
-            border: 1px solid #4169E1;
-        }
-        .sign-up
-        {
-            width: 500px;
-            padding: 10px;
-            margin: 8% auto 0;
-            text-align: center;
-        }
-        .sign-up h1{
-           font-size: 35px;
-        }
-        .sign-up p{
-            font-size: 15px;
-         }
-         .sign-up form{
-            font-size: 15px;
-         }
-         .signup-btn{
-            width: 200px;
-            padding: 10px;
-            margin: 15px;
-        }
-        .login
-        {
-            width: 500px;
-            padding: 10px;
-            margin: 8% auto 0;
-            text-align: center;   
-        }
-        .login h1{
-           font-size: 35px;
-        }
-        .login-btn{
-            padding: 10px;
-            margin: 10px;
-            width: 120px;
-        }
-        .login form{
-            font-size: 15px;
-        }
-        .login button{
-            font-size: 15px;
-        }
-        .header .navbar-toggler{
-            font-size: 5px;
-            color: #4169E1;
-        }
-        .foot .navbar-toggler{
-            font-size: 5px;
-            color: #4169E1;
-        }
-        .form-container{
-            padding: 5px;
-            margin-left: 150px;  
-        }
-        .form-container button{
-            width: 100px;
-            padding: 8px;
-            margin: 10px;
-            font-size: 12px;
-        }
-        .add-rentals h2{
-            font-size: 40px;
-        }
-        .edit-rentals h2{
-            font-size: 40px;
-        }
-        .rental-image{
-            max-width: 70%;
-            max-height: 70%;
-            display: inline-block;
-        }
+  .fig4 {
+    font-size: 20px;
+  }
+  .fig2 {
+    font-size: 10px;
+  }
+  .input-box {
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 50%;
+    border: 1px solid #4169e1;
+  }
+  .sign-up {
+    width: 500px;
+    padding: 10px;
+    margin: 8% auto 0;
+    text-align: center;
+  }
+  .sign-up h1 {
+    font-size: 35px;
+  }
+  .sign-up p {
+    font-size: 15px;
+  }
+  .sign-up form {
+    font-size: 15px;
+  }
+  .signup-btn {
+    width: 200px;
+    padding: 10px;
+    margin: 15px;
+  }
+  .login {
+    width: 500px;
+    padding: 10px;
+    margin: 8% auto 0;
+    text-align: center;
+  }
+  .login h1 {
+    font-size: 35px;
+  }
+  .login-btn {
+    padding: 10px;
+    margin: 10px;
+    width: 120px;
+  }
+  .login form {
+    font-size: 15px;
+  }
+  .login button {
+    font-size: 15px;
+  }
+  .header .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .foot .navbar-toggler {
+    font-size: 5px;
+    color: #4169e1;
+  }
+  .form-container {
+    padding: 5px;
+    margin-left: 150px;
+  }
+  .form-container button {
+    width: 100px;
+    padding: 8px;
+    margin: 10px;
+    font-size: 12px;
+  }
+  .add-rentals h2 {
+    font-size: 40px;
+  }
+  .edit-rentals h2 {
+    font-size: 40px;
+  }
+  .rental-image {
+    max-width: 70%;
+    max-height: 70%;
+    display: inline-block;
+  }
 }
