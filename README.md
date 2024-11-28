@@ -3,3 +3,6 @@ No part of this assignment has been copied manually or electronically from any o
 Student Name : Kester Bascillo
 Student Email : kbascillo@myseneca.ca
 Course/Section: WEB322/NEE
+
+
+The email message sent to recipient has been disabled due to my account being temporarily disabled.
