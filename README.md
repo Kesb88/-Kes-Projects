@@ -3,6 +3,3 @@ No part of this assignment has been copied manually or electronically from any o
 Student Name : Kester Bascillo
 Student Email : kbascillo@myseneca.ca
 Course/Section: WEB322/NEE
-## Project URLs
-GitHub Repo : https://github.com/Kesb88/web322-kbascillo
-Cyclic URL : https://ill-ruby-trout-sari.cyclic.app
